@@ -1,7 +1,7 @@
 import sys
 # import PySide2
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton,QVBoxLayout,QFrame,QWidget
-from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
+from PyQt5.QtCore import QFile, QTextStream
 import numpy as np
 # import matplotlib.pyplot as plt
 import plotly.graph_objs as go
@@ -17,11 +17,9 @@ from Incomer import total_incomer_supply
 from EC02 import ec02_energy_consumption,ec02_meter_piechart,ec02_fre_deviations,ec02_PF_deviations,ec02_Vswell_Vsag
 from EC03 import ec03_energy_consumption,ec03_meter_piechart,ec03_fre_deviations,ec03_PF_deviations,ec03_Vswell_Vsag
 df=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
-# print("df loaded")
 df1=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec03.csv')
-# print("df1 loaded")
 df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
-# print("df2 Loaded")
+print("datasets Loaded")
 df['Time column 1'] = df['Time column 1'].astype(str)
 df['Time column 1'] = pd.to_datetime(df['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 df1['Time column 1'] = df1['Time column 1'].astype(str)
@@ -32,10 +30,8 @@ print("timestamp changed")
 building2 = df[df['building'].isin(['TC-1','TC&MEDICAL'])]
 building3 = df1[df1['building'].isin(['TC3-TOWER A', 'TC3-TOWER B', 'TC3 HVAC'])]
 df3 = df2[(df2["building"] == 'TC-1') | (df2["building"] == 'TC&MEDICAL') | (df2["building"] == 'TC3-TOWER A') | (df2["building"] == 'TC3-TOWER B') | (df2["building"] == 'TC3 HVAC')]
-print("df3 Loaded")
 df4=df2[(df2["meter"] == '11kv_415Vtrafo') | (df2["meter"] == '33kV trafo-1') | (df2["meter"] == '33kV trafo-2') | (df2["meter"] == '33kV trafo-3') |
         (df2["meter"] == '33kV trafo-4') | (df2["meter"] == '33kV trafo-5') | (df2["meter"] == 'EC02 MFM 11KV TRAFO') | (df2["meter"] == '33KV Incomer')]
-print("df4 Loaded")
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -84,23 +80,6 @@ class MainWindow(QMainWindow):
         self.ui.BI_insights_cb.addItems(center_names)
         self.ui.BI_insights_cb.currentIndexChanged.connect(self.update_building_chords)
 
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_voltage_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
-
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_current_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_current_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_current_graphs)
-
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_pf_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
-
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_fre_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
-
-
         total_energy_consumption(self,from_ts, to_ts)
         weekly_graph(self,from_ts, to_ts)
         centerwise_piechart(self,from_ts, to_ts)
@@ -112,11 +91,6 @@ class MainWindow(QMainWindow):
         ec02_fre_deviations(self,from_ts,to_ts)
         ec02_PF_deviations(self,from_ts,to_ts)
         ec02_Vswell_Vsag(self,from_ts,to_ts)
-
-        # self.voltage(from_ts, to_ts)
-        # self.current(from_ts, to_ts)
-        # self.powerfactor(from_ts, to_ts)
-        # self.frequeny(from_ts, to_ts)
         
         ec03_energy_consumption(self,from_ts, to_ts)
         ec03_meter_piechart(self,from_ts,to_ts)
@@ -141,9 +115,21 @@ class MainWindow(QMainWindow):
         # self.change_fre_graphs(self.ui.ec02_meter_cb.currentText())
         # self.change_fre_graphs(self.ui.ec03_meter_cb.currentText())
 
-        # Connect the single slot function to both dateChanged signals
-        self.ui.dateEdit.dateChanged.connect(self.call_graphs)
-        self.ui.dateEdit_6.dateChanged.connect(self.call_graphs)
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_voltage_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
+
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_current_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_current_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_current_graphs)
+
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_pf_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
+
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_fre_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
 
         r1,r2 = self.MI_kwh(from_ts1, to_ts1)
         r3,r4= self.MI_frequency(from_ts1,to_ts1)
@@ -164,7 +150,7 @@ class MainWindow(QMainWindow):
         r34=self.BI_kwh_max(from_ts1,to_ts1)
         r35=self.BI_kwh_min(from_ts1,to_ts1)
 
-        self.ui.MI_kwh_lb.setText(f"{r1}<br>{r2}")
+        self.ui.MI_kwh_lb.setText(f"{r1}<br>{r2}") 
         self.ui.MI_feq_lb.setText(f"{r3}<br>{r4}")
         self.ui.MI_pf_lb.setText(f"{r5}<br>{r6}")
         self.ui.MI_33VSwellR_lb.setText(r7)
@@ -197,10 +183,63 @@ class MainWindow(QMainWindow):
         self.ui.BI_idlehours_lb.setText('\n'.join(r33))
         self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")
 
+        # Connect the single slot function to both dateChanged signals
+        self.ui.dateEdit.dateChanged.connect(self.call_graphs)
+        self.ui.dateEdit_6.dateChanged.connect(self.call_graphs)
+
         self.ui.dateEdit_3.dateChanged.connect(self.update_all_chords)
         self.ui.dateEdit_4.dateChanged.connect(self.update_all_chords)
       
+    def on_home_btn_1_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+    def on_analytics_btn_1_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+    def on_insights_btn_1_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(1)
+    def on_prediction_btn_1_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(3)
 
+    def on_home_btn_2_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+    def on_analytics_btn_2_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+    def on_insights_btn_2_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(1)
+    def on_prediction_btn_2_clicked(self):
+        self.ui.stackedWidget.setCurrentIndex(3)
+       
+    def on_energy_btn_3_clicked(self):
+        self.ui.stackedWidget_3.setCurrentIndex(0)
+    def on_incomer_btn_3_clicked(self):
+        self.ui.stackedWidget_3.setCurrentIndex(1)
+    def on_ec02_btn_3_clicked(self):
+        self.ui.stackedWidget_3.setCurrentIndex(2)
+    def on_ec03_btn_3_clicked(self):
+        self.ui.stackedWidget_3.setCurrentIndex(3)   
+    def on_stackedWidget_currentChanged(self, index):
+        btn_list = self.ui.icon_only_widget.findChildren(QPushButton) \
+                    + self.ui.full_menu_widget.findChildren(QPushButton)
+        
+        for btn in btn_list:
+            if index in [5, 6]:
+                btn.setAutoExclusive(False)
+                btn.setChecked(False)
+            else:
+                btn.setAutoExclusive(True)   
+    
+    def update_ec02_meter_combobox(self):
+        selected_building = self.ui.ec02_building_cb.currentText()
+        building_df = building2[building2["building"] == selected_building]
+        meter_names = building_df["meter"].unique().tolist()
+        self.ui.ec02_meter_cb.clear()
+        self.ui.ec02_meter_cb.addItems(meter_names)
+    def update_ec03_meter_combobox(self):
+        selected_building = self.ui.ec03_building_cb.currentText()
+        building_df = building3[building3["building"] == selected_building]
+        meter_names = building_df["meter"].unique().tolist()
+        self.ui.ec03_meter_cb.clear()
+        self.ui.ec03_meter_cb.addItems(meter_names)
+    
     def call_graphs(self,selected_meter):
         self.update_all_graphs()
         self.change_voltage_graphs(selected_meter)
@@ -304,19 +343,6 @@ class MainWindow(QMainWindow):
             frame = None
         self.frequency(from_ts, to_ts, selected_meter,frame)
 
-    def update_ec02_meter_combobox(self):
-        selected_building = self.ui.ec02_building_cb.currentText()
-        building_df = building2[building2["building"] == selected_building]
-        meter_names = building_df["meter"].unique().tolist()
-        self.ui.ec02_meter_cb.clear()
-        self.ui.ec02_meter_cb.addItems(meter_names)
-    def update_ec03_meter_combobox(self):
-        selected_building = self.ui.ec03_building_cb.currentText()
-        building_df = building3[building3["building"] == selected_building]
-        meter_names = building_df["meter"].unique().tolist()
-        self.ui.ec03_meter_cb.clear()
-        self.ui.ec03_meter_cb.addItems(meter_names)
-    
     def update_all_chords(self):
         from_date = self.ui.dateEdit_3.date().toPyDate()
         to_date = self.ui.dateEdit_4.date().toPyDate()
@@ -374,7 +400,6 @@ class MainWindow(QMainWindow):
         self.ui.BI_kwh_lb.setText(r32)
         self.ui.BI_idlehours_lb.setText('\n'.join(r33))
         self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")
-
     def update_incomer_chords(self):
         from_date = self.ui.dateEdit_3.date().toPyDate()
         to_date = self.ui.dateEdit_4.date().toPyDate()
@@ -397,7 +422,6 @@ class MainWindow(QMainWindow):
         self.ui.In_VsagY_lb.setText(r29)
         self.ui.In_VsagB_lb.setText(r30)
         self.ui.In_idlehours_lb.setText(r31)
-
     def update_building_chords(self):
         from_date = self.ui.dateEdit_3.date().toPyDate()
         to_date = self.ui.dateEdit_4.date().toPyDate()
@@ -411,273 +435,7 @@ class MainWindow(QMainWindow):
 
         self.ui.BI_kwh_lb.setText(r32)
         self.ui.BI_idlehours_lb.setText('\n'.join(r33))
-        self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")
-    
-    def on_home_btn_1_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
-    def on_analytics_btn_1_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
-    def on_insights_btn_1_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
-    def on_prediction_btn_1_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
-
-    def on_home_btn_2_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
-    def on_analytics_btn_2_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
-    def on_insights_btn_2_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
-    def on_prediction_btn_2_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
-       
-    def on_energy_btn_3_clicked(self):
-        self.ui.stackedWidget_3.setCurrentIndex(0)
-    def on_incomer_btn_3_clicked(self):
-        self.ui.stackedWidget_3.setCurrentIndex(1)
-    def on_ec02_btn_3_clicked(self):
-        self.ui.stackedWidget_3.setCurrentIndex(2)
-    def on_ec03_btn_3_clicked(self):
-        self.ui.stackedWidget_3.setCurrentIndex(3)   
-    
-    def on_stackedWidget_currentChanged(self, index):
-        btn_list = self.ui.icon_only_widget.findChildren(QPushButton) \
-                    + self.ui.full_menu_widget.findChildren(QPushButton)
-        
-        for btn in btn_list:
-            if index in [5, 6]:
-                btn.setAutoExclusive(False)
-                btn.setChecked(False)
-            else:
-                btn.setAutoExclusive(True)   
-
-    # def total_energy_consumption(self,from_ts, to_ts):
-    #     gdf = df[['Time column 1','actual_kwh']]
-    #     grouped_df = gdf.groupby('Time column 1').sum()
-    #     gdf1 = df1[['Time column 1','actual_kwh']]
-    #     grouped_df1 = gdf1.groupby('Time column 1').sum()
-    #     grouped_df = grouped_df.reset_index()
-    #     grouped_df1 = grouped_df1.reset_index()
-    #     grouped_df['cum']=grouped_df['actual_kwh'].cumsum(axis = 0)
-    #     grouped_df1['cum']=grouped_df1['actual_kwh'].cumsum(axis = 0)
-    #     fig = go.Figure()
-    #     mask2 = (grouped_df['Time column 1']>= from_ts) & (grouped_df['Time column 1']<= to_ts)
-    #     mask3 = (grouped_df1['Time column 1']>= from_ts) & (grouped_df1['Time column 1']<= to_ts)
-    #     fig.add_trace(go.Scatter(x=grouped_df.loc[mask2, 'Time column 1'], y=grouped_df.loc[mask2, 'cum'], name='EC02'))
-    #     fig.add_trace(go.Scatter(x=grouped_df1.loc[mask3, 'Time column 1'], y=grouped_df1.loc[mask3, 'cum'], name='EC03'))
-    #     fig.update_layout(title={'text': 'Energy Consumption','font': {'size': 20,'family': 'Arial','color': 'black'}}, yaxis_title='kWh',plot_bgcolor='white',paper_bgcolor='white')
-    #     # x=fig.show()
-    #     # return x
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-    #     frame_layout = self.ui.fram.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.fram)
-    #     frame_layout.addWidget(plot1) 
-    #     print("no prblm")
-    # def centerwise_piechart(self,from_ts, to_ts):
-    #     m1 = df2.groupby(['center','Time column 1']).sum()
-    #     m1 = m1.reset_index()
-    #     mask = (m1['Time column 1']>= from_ts) & (m1['Time column 1']<= to_ts)
-    #     m1=m1.loc[mask]
-    #     fig = px.pie(m1, values='kwh', names='center',title= 'Energy Consumption')
-    #     # fig = go.Figure(data=data)
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-
-    #     frame_layout = self.ui.frame_3.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_3)
-    #     frame_layout.addWidget(plot1)
-    # def weekly_graph(self,from_ts, to_ts):
-    #     mask = (df2['Time column 1']>= to_ts-pd.Timedelta('7 days')) & (df2['Time column 1']<= to_ts)
-    #     m=df2.loc[mask]
-    #     m1 = m.pivot_table(index='days_of_week', columns=['time_of_day'], values=['kwh'], aggfunc='count')
-    #     m1 = m1.melt(ignore_index=False)
-    #     m1.reset_index(inplace=True)
-    #     fig = px.bar(data_frame=m1,
-    #     x="days_of_week",
-    #     y="value",
-    #     color='time_of_day',
-    #     category_orders={'time_of_day':['morning', 'afternoon', 'evening', 'night']},
-    #     orientation='v',
-    #     barmode='relative',
-    #     opacity=0.8,
-    #     # plot_bgcolor='white',
-    #     # paper_bgcolor='white',
-    #     color_discrete_map={'morning':'#ffff00','afternoon':'#f26517','evening':'#69b2f4','night':'#b2b2b2'})
-    #     # fig.update_layout(title={'text': 'Energy Consumption','font': {'size': 20,'family': 'Arial','color': 'black'}}, yaxis_title='kWh',plot_bgcolor='white',paper_bgcolor='white')
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-
-    #     frame_layout = self.ui.frame_2.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_2)
-    #     frame_layout.addWidget(plot1)
-    
-    # def total_incomer_supply(self,from_ts, to_ts):
-    #     color=["red","blue","lightgreen","#f0920e","#f71302","#f00e8e","#f0f00e","#0ef083","#0e83f0"]
-    #     i=0
-    #     M = ['INCOMER-EC03','Trafo-1','Trafo-2','Trafo-3','Trafo-4','Trafo-5','trafo-1','INCOMER']
-    #     data=[]
-    #     title="INCOMERS For entrie Centers"
-    #     grouped1 = df2.groupby(['building','Time column 1']).sum()
-    #     grouped1 = grouped1.reset_index()
-    #     mask = (grouped1['Time column 1']>= from_ts) & (grouped1['Time column 1']<= to_ts)
-    #     for b in grouped1.building.unique():
-    #         if b in M:
-    #             x=[]
-    #             y=[]
-    #             x=grouped1.loc[(grouped1["building"]==b)& mask,"Time column 1"]
-    #             y=grouped1.loc[(grouped1["building"]==b)& mask,"kwh"]
-    #             trace=go.Scatter(x=x,y=y,mode='lines',line=dict(color=color[i],width=2),name=str(b))
-    #             data.append(trace)
-    #             i+=1
-    #     fig = go.Figure(data=data)
-    #     fig.update_layout(title={'text': 'Incomers','font': {'size': 20,'family': 'Arial','color': 'black'}}, yaxis_title='kWh',plot_bgcolor='white',paper_bgcolor='white')
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-    #     frame_layout = self.ui.frame_4.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_4)
-    #     frame_layout.addWidget(plot1)  
-    
-    # def ec02_energy_consumption(self,from_ts, to_ts):
-    #     data=[]
-    #     title="EC02 For each Building"
-    #     grouped = df.groupby(['building','Time column 1']).sum()
-    #     grouped['cum'] = grouped['actual_kwh'].cumsum(axis = 0)
-    #     grouped = grouped.reset_index()
-    #     mask2 = (grouped['Time column 1']>= from_ts) & (grouped['Time column 1']<= to_ts)
-    #     for b in grouped.building.unique():
-    #         if (b!='INCOMER') and (b !='trafo-1'):
-    #             x=[]
-    #             y=[]
-    #             x=grouped.loc[(grouped["building"]==b)& mask2,"Time column 1"]
-    #             y=grouped.loc[(grouped["building"]==b)& mask2,"cum"]
-    #             trace=go.Scatter(x=x,y=y,mode='lines',line=dict(width=2),name=str(b))
-    #             data.append(trace)
-    #     fig=go.Figure(data=data)
-    #     fig.update_layout(title={'text':'EC02 Energy Consumption','font': {'size': 20,'family': 'Arial','color': 'black'}}, yaxis_title='kWh',plot_bgcolor='white',paper_bgcolor='white')
-
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-    #     frame_layout = self.ui.frame_9.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_9)
-    #     frame_layout.addWidget(plot1)
-    # def ec02_meter_piechart(self,from_ts,to_ts):
-    #     b=self.ui.ec02_building_cb.currentText()
-    #     b2 = building2[building2['building']==b]
-    #     mask = (b2['Time column 1']>= from_ts) & (b2['Time column 1']<= to_ts)
-    #     b2= b2.loc[mask]
-    #     meter_counts = b2.groupby('meter').sum().reset_index()
-    #     fig = px.pie( meter_counts, values='kwh', names='meter', title='Total Energy Consumpution')
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-
-    #     frame_layout = self.ui.frame_11.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_11)
-    #     frame_layout.addWidget(plot1)
-    # def ec02_fre_deviations(self,from_ts,to_ts):
-    #     meter=self.ui.ec02_meter_cb.currentText()
-    #     data = building2[building2['meter']==meter]
-    #     mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
-    #     count = len(data.loc[mask2 &(data['F']<49)])
-    #     fig = px.bar(x=[count], y=[meter], title=f"Frequency Deviation Count")
-    #     fig.update_traces(width=0.2) # set the width of the bars
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-
-    #     frame_layout = self.ui.frame_21.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_21)
-    #     frame_layout.addWidget(plot1)
-    # def ec02_PF_deviations(self,from_ts,to_ts):
-    #     meter=self.ui.ec02_meter_cb.currentText()
-    #     data = building2[building2['meter']==meter]
-    #     mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
-    #     count = len(data.loc[mask2 &(data['PF']<0.85)])
-    #     fig = px.bar(x=[count], y=[meter], title=f"Power Factor Deviation")
-    #     fig.update_traces(width=0.2)
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-
-    #     frame_layout = self.ui.frame_22.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_22)
-    #     frame_layout.addWidget(plot1)
-    # def ec02_Vswell_Vsag(self,from_ts,to_ts):
-    #     meter=self.ui.ec02_meter_cb.currentText()
-    #     data = building2[building2['meter']==meter]
-    #     voltage = data[['rv','yv','bv','Time column 1']]
-    #     voltage.set_index('Time column 1', inplace=True)
-    #     voltage = voltage.resample('30S').ffill()
-    #     mask2 = (voltage.index>= from_ts) & (voltage.index<= to_ts)
-    #     voltage = voltage.loc[mask2]
-    #     # Nominal voltage level
-    #     nominal_voltage = 230 
-    #     threshold = 0.1  # 10% change
-    #     # Find the voltage change from nominal voltage for each phase
-    #     voltage_change_rv = voltage["rv"] / nominal_voltage - 1
-    #     voltage_change_yv = voltage["yv"] / nominal_voltage - 1
-    #     voltage_change_bv = voltage["bv"] / nominal_voltage - 1
-    #     # Find the time duration between consecutive measurements
-    #     time_diff = voltage.index.to_series().diff().dt.total_seconds()
-    #     # Identify the voltage swells and sags based on criteria for each phase
-    #     is_swell_rv = (voltage_change_rv >= threshold) & (time_diff <= 60)
-    #     is_sag_rv = (voltage_change_rv <= -threshold) & (time_diff <= 60)
-    #     is_swell_yv = (voltage_change_yv >= threshold) & (time_diff <= 60)
-    #     is_sag_yv = (voltage_change_yv <= -threshold) & (time_diff <= 60)
-    #     is_swell_bv = (voltage_change_bv >= threshold) & (time_diff <= 60)
-    #     is_sag_bv = (voltage_change_bv <= -threshold) & (time_diff <= 60)
-    #     # Count the number of voltage swells and sags for each phase
-    #     num_swells_rv = is_swell_rv.sum()
-    #     num_sags_rv = is_sag_rv.sum()
-    #     num_swells_yv = is_swell_yv.sum()
-    #     num_sags_yv = is_sag_yv.sum()
-    #     num_swells_bv = is_swell_bv.sum()
-    #     num_sags_bv = is_sag_bv.sum()
-    #     fig = go.Figure(data=[
-    #         go.Bar(name='Swells', x=['rv', 'yv', 'bv'], y=[num_swells_rv, num_swells_yv, num_swells_bv]),
-    #         go.Bar(name='Sags', x=['rv', 'yv', 'bv'], y=[num_sags_rv, num_sags_yv, num_sags_bv])
-    #     ])
-    #     fig.update_layout(title='Voltage Swells and Sags')
-    #     plot1 = QWebEngineView()
-    #     plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-
-    #     frame_layout = self.ui.frame_20.layout()
-    #     if frame_layout is not None:
-    #         for i in reversed(range(frame_layout.count())):
-    #             frame_layout.itemAt(i).widget().setParent(None)
-    #     else:
-    #         frame_layout = QVBoxLayout(self.ui.frame_20)
-    #     frame_layout.addWidget(plot1)
+        self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")   
     
     def voltage(self, from_ts, to_ts, selected_meter, frame):
         dfir = df[(df['meter'] == selected_meter)]

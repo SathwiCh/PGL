@@ -9,6 +9,7 @@ from PyQt5 import QtWidgets
 import pandas as pd
 
 df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
+print("Loading...")
 df2['Time column 1'] = df2['Time column 1'].astype(str)
 df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 
