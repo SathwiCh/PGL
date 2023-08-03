@@ -40,7 +40,6 @@
 }
 #full_menu_widget QPushButton{
 		border:none;
-		border_radius:3px;
 		text-align: left;
 		padding:8px 0 8px 15px;
 		color:#FFFFFF;
@@ -86,7 +85,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="resource.qrc">:/logo/Lnt_logo.png</pixmap>
+            <pixmap resource="resource.qrc">:/icon/icon/Lnt_logo.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -302,7 +301,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="resource.qrc">:/logo/Lnt_logo.png</pixmap>
+          <pixmap resource="resource.qrc">:/icon/icon/Lnt_logo.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -637,7 +636,7 @@
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resource.qrc">:/logo/Logo1.png</pixmap>
+             <pixmap resource="resource.qrc">:/icon/icon/Logo1.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -912,7 +911,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>947</width>
+                    <width>162</width>
                     <height>1500</height>
                    </rect>
                   </property>
@@ -1017,7 +1016,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>947</width>
+                    <width>239</width>
                     <height>2000</height>
                    </rect>
                   </property>
@@ -1180,7 +1179,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>947</width>
+                    <width>239</width>
                     <height>2000</height>
                    </rect>
                   </property>
@@ -1355,7 +1354,7 @@
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-709</y>
+                <y>0</y>
                 <width>969</width>
                 <height>1500</height>
                </rect>
@@ -2756,7 +2755,7 @@ background-color: rgb(203, 229, 253);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>85</width>
+                <width>81</width>
                 <height>2000</height>
                </rect>
               </property>
@@ -2783,7 +2782,7 @@ background-color: rgb(203, 229, 253);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>85</width>
+                <width>81</width>
                 <height>2000</height>
                </rect>
               </property>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'sidebar_new2345678.ui'
+# Form implementation generated from reading ui file 'GUI_1.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -41,7 +41,6 @@ class Ui_MainWindow(object):
 "}\n"
 "#full_menu_widget QPushButton{\n"
 "        border:none;\n"
-"        border_radius:3px;\n"
 "        text-align: left;\n"
 "        padding:8px 0 8px 15px;\n"
 "        color:#FFFFFF;\n"
@@ -62,7 +61,7 @@ class Ui_MainWindow(object):
         self.logo_label_1.setMinimumSize(QtCore.QSize(50, 50))
         self.logo_label_1.setMaximumSize(QtCore.QSize(50, 50))
         self.logo_label_1.setText("")
-        self.logo_label_1.setPixmap(QtGui.QPixmap(":/logo/Lnt_logo.png"))
+        self.logo_label_1.setPixmap(QtGui.QPixmap(":/icon/icon/Lnt_logo.png"))
         self.logo_label_1.setScaledContents(True)
         self.logo_label_1.setObjectName("logo_label_1")
         self.horizontalLayout_3.addWidget(self.logo_label_1)
@@ -145,7 +144,7 @@ class Ui_MainWindow(object):
         self.logo_label_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.logo_label_2.setLineWidth(1)
         self.logo_label_2.setText("")
-        self.logo_label_2.setPixmap(QtGui.QPixmap(":/logo/Lnt_logo.png"))
+        self.logo_label_2.setPixmap(QtGui.QPixmap(":/icon/icon/Lnt_logo.png"))
         self.logo_label_2.setScaledContents(True)
         self.logo_label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.logo_label_2.setObjectName("logo_label_2")
@@ -257,7 +256,7 @@ class Ui_MainWindow(object):
         self.label.setFrameShape(QtWidgets.QFrame.WinPanel)
         self.label.setFrameShadow(QtWidgets.QFrame.Raised)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/logo/Logo1.png"))
+        self.label.setPixmap(QtGui.QPixmap(":/icon/icon/Logo1.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
@@ -370,7 +369,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 947, 1500))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 162, 1500))
         self.scrollAreaWidgetContents.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_10 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -429,7 +428,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollArea_5.setObjectName("scrollArea_5")
         self.scrollAreaWidgetContents_4 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 947, 2000))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 239, 2000))
         self.scrollAreaWidgetContents_4.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_4)
@@ -520,7 +519,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName("scrollArea_6")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 947, 2000))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 239, 2000))
         self.scrollAreaWidgetContents_6.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_6)
@@ -615,7 +614,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, -709, 969, 1500))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 969, 1500))
         self.scrollAreaWidgetContents_3.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents_3.setMouseTracking(False)
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
@@ -1275,7 +1274,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 85, 2000))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 81, 2000))
         self.scrollAreaWidgetContents_2.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_2)
@@ -1289,7 +1288,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollArea_4.setObjectName("scrollArea_4")
         self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 85, 2000))
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 81, 2000))
         self.scrollAreaWidgetContents_5.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_5)
