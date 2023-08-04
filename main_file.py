@@ -12,10 +12,14 @@ import pandas as pd
 from GUI_1 import Ui_MainWindow
 
 #import the functions from each python file
-from Energy import total_energy_consumption,centerwise_piechart,weekly_graph
-from Incomer import total_incomer_supply
-from EC02 import ec02_energy_consumption,ec02_meter_piechart,ec02_fre_deviations,ec02_PF_deviations,ec02_Vswell_Vsag
-from EC03 import ec03_energy_consumption,ec03_meter_piechart,ec03_fre_deviations,ec03_PF_deviations,ec03_Vswell_Vsag
+# from Energy import total_energy_consumption,centerwise_piechart,weekly_graph
+from Energy import EnergyPlotter
+# from Incomer import total_incomer_supply
+from Incomer import IncomerPlotter
+# from EC02 import ec02_energy_consumption,ec02_meter_piechart,ec02_fre_deviations,ec02_PF_deviations,ec02_Vswell_Vsag
+from EC02 import EC02Plotter
+# from EC03 import ec03_energy_consumption,ec03_meter_piechart,ec03_fre_deviations,ec03_PF_deviations,ec03_Vswell_Vsag
+from EC03 import EC03Plotter
 
 #Read the Dataframes from the local
 #df--this variable refers to the dataset of Energy Center-2 (EC02)
@@ -63,14 +67,14 @@ class MainWindow(QMainWindow):
         self.ui.energy_btn_3.setChecked(True)
 
         #Fetch the date from the dateEdit and convert into pandas Datetime object type for the Analytics Tab
-        from_date = self.ui.dateEdit.date().toPyDate()
-        to_date = self.ui.dateEdit_6.date().toPyDate()
+        from_date = self.ui.From_date.date().toPyDate()
+        to_date = self.ui.To_date.date().toPyDate()
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
 
         #Fetch the date from the dateEdit and convert into pandas Datetime object type for the Insights Tab
-        from_date1 = self.ui.dateEdit_3.date().toPyDate()
-        to_date1 = self.ui.dateEdit_4.date().toPyDate()
+        from_date1 = self.ui.From_date_Insights.date().toPyDate()
+        to_date1 = self.ui.To_date_Insights.date().toPyDate()
         from_ts1 = pd.Timestamp(from_date1)
         to_ts1 = pd.Timestamp(to_date1)
 
@@ -111,26 +115,26 @@ class MainWindow(QMainWindow):
         self.ui.BI_insights_cb.currentIndexChanged.connect(self.update_building_chords)
 
         #Default plotting of graphs for the Energy tab- Analytics tab
-        total_energy_consumption(self,from_ts, to_ts)
-        weekly_graph(self,from_ts, to_ts)
-        centerwise_piechart(self,from_ts, to_ts)
+        EnergyPlotter.total_energy_consumption(self,from_ts, to_ts)
+        EnergyPlotter.weekly_graph(self,from_ts, to_ts)
+        EnergyPlotter.centerwise_piechart(self,from_ts, to_ts)
 
         #Default plotting of graphs for the Incomers tab- Analytics tab
-        total_incomer_supply(self,from_ts, to_ts)
+        IncomerPlotter.total_incomer_supply(self,from_ts, to_ts)
 
         #Default plotting of graphs for the EC02 tab- Analytics tab
-        ec02_energy_consumption(self,from_ts, to_ts)
-        ec02_meter_piechart(self,from_ts, to_ts)
-        ec02_fre_deviations(self,from_ts,to_ts)
-        ec02_PF_deviations(self,from_ts,to_ts)
-        ec02_Vswell_Vsag(self,from_ts,to_ts)
+        EC02Plotter.ec02_energy_consumption(self,from_ts, to_ts)
+        EC02Plotter.ec02_meter_piechart(self,from_ts, to_ts)
+        EC02Plotter.ec02_fre_deviations(self,from_ts,to_ts)
+        EC02Plotter.ec02_PF_deviations(self,from_ts,to_ts)
+        EC02Plotter.ec02_Vswell_Vsag(self,from_ts,to_ts)
         
         #Default plotting of graphs for the EC03 tab- Analytics tab
-        ec03_energy_consumption(self,from_ts, to_ts)
-        ec03_meter_piechart(self,from_ts,to_ts)
-        ec03_fre_deviations(self,from_ts,to_ts)
-        ec03_PF_deviations(self,from_ts,to_ts)
-        ec03_Vswell_Vsag(self,from_ts,to_ts)
+        EC03Plotter.ec03_energy_consumption(self,from_ts, to_ts)
+        EC03Plotter.ec03_meter_piechart(self,from_ts,to_ts)
+        EC03Plotter.ec03_fre_deviations(self,from_ts,to_ts)
+        EC03Plotter.ec03_PF_deviations(self,from_ts,to_ts)
+        EC03Plotter.ec03_Vswell_Vsag(self,from_ts,to_ts)
         print("Default plotting done")
 
         #Display the default Voltage Graphs based on the current text from the meter dropdown
@@ -174,69 +178,69 @@ class MainWindow(QMainWindow):
         self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
 
         #Create the variable to store the returned values from the "Main Incomer" Functions
-        r1,r2 = self.MI_kwh(from_ts1, to_ts1)
-        r3,r4= self.MI_frequency(from_ts1,to_ts1)
-        r5,r6=self.MI_powerfactor(from_ts1,to_ts1)
-        r21=self.MI_high_kwh(from_ts1,to_ts1)
-        r7,r8,r9,r10,r11,r12=self.MI_33kv_Vswell_Vsag(from_ts1,to_ts1)
-        r13,r14,r15,r16,r17,r18=self.MI_11kv_Vswell_Vsag(from_ts1,to_ts1)
-        r19,r20=self.MI_idlehours(from_ts1,to_ts1)
+        MI_kwh11,MI_kwh33 = self.MI_kwh(from_ts1, to_ts1)
+        MI_freq_11,MI_freq_33= self.MI_frequency(from_ts1,to_ts1)
+        MI_pf_11,MI_pf_33=self.MI_powerfactor(from_ts1,to_ts1)
+        MI_high_kwh=self.MI_high_kwh(from_ts1,to_ts1)
+        MI_33VswellR,MI_33VswellY,MI_33VswellB,MI_33VsagR,MI_33VsagY,MI_33VsagB=self.MI_33kv_Vswell_Vsag(from_ts1,to_ts1)
+        MI_11VswellR,MI_11VswellY,MI_11VswellB,MI_11VsagR,MI_11VsagY,MI_11VsagB=self.MI_11kv_Vswell_Vsag(from_ts1,to_ts1)
+        MI_11kvidlehours,MI_33kvidlehours=self.MI_idlehours(from_ts1,to_ts1)
 
         #Create the variable to store the returned values from the "Incomer" Functions
-        r22=self.In_kwh(from_ts1, to_ts1)
-        r23=self.In_frequency(from_ts1,to_ts1)
-        r24=self.In_powerfactor(from_ts1,to_ts1)
-        r25,r26,r27,r28,r29,r30=self.In_Vswell_Vsag(from_ts1,to_ts1)
-        r31=self.In_idlehours(from_ts1,to_ts1)
+        In_kwh=self.In_kwh(from_ts1, to_ts1)
+        In_freq=self.In_frequency(from_ts1,to_ts1)
+        In_pf=self.In_powerfactor(from_ts1,to_ts1)
+        In_VswellR,In_VswellY,In_VswellB,In_VsagR,In_VsagY,In_VsagB=self.In_Vswell_Vsag(from_ts1,to_ts1)
+        In_idlehrs=self.In_idlehours(from_ts1,to_ts1)
 
         #Create the variable to store the returned values from the "Buildings" Functions
-        r32=self.BI_kwh(from_ts1,to_ts1)
-        r33=self.BI_idlehours(from_ts1, to_ts1)
-        r34=self.BI_kwh_max(from_ts1,to_ts1)
-        r35=self.BI_kwh_min(from_ts1,to_ts1)
+        BI_kwh=self.BI_kwh(from_ts1,to_ts1)
+        BI_idlehrs=self.BI_idlehours(from_ts1, to_ts1)
+        BI_kwhMax=self.BI_kwh_max(from_ts1,to_ts1)
+        BI_kwhMin=self.BI_kwh_min(from_ts1,to_ts1)
 
         #Set the return text to the referred lables and display
-        self.ui.MI_kwh_lb.setText(f"{r1}<br>{r2}") 
-        self.ui.MI_feq_lb.setText(f"{r3}<br>{r4}")
-        self.ui.MI_pf_lb.setText(f"{r5}<br>{r6}")
-        self.ui.MI_33VSwellR_lb.setText(r7)
-        self.ui.MI_33VSwellY_lb.setText(r8)
-        self.ui.MI_33VSwellB_lb.setText(r9)
-        self.ui.MI_33VSagR_lb.setText(r10)
-        self.ui.MI_33VSagY_lb.setText(r11)
-        self.ui.MI_33VSagB_lb.setText(r12)
-        self.ui.MI_11VSwellR_lb.setText(r13)
-        self.ui.MI_11VSwellY_lb.setText(r14)
-        self.ui.MI_11VSwellB_lb.setText(r15)
-        self.ui.MI_11VSagR_lb.setText(r16)
-        self.ui.MI_11VSagY_lb.setText(r17)
-        self.ui.MI_11VSagB_lb.setText(r18)
-        self.ui.MI_idlehours_lb.setText(f"{r19}<br>{r20}")
-        self.ui.MI_highkwh_lb.setText(r21)
-        self.ui.In_kwh_lb.setText(r22)
-        self.ui.In_freq_lb.setText(r23)
-        self.ui.In_pf_lb.setText(r24)
+        self.ui.MI_kwh_lb.setText(f"{MI_kwh11}<br>{MI_kwh33}") 
+        self.ui.MI_feq_lb.setText(f"{MI_freq_11}<br>{MI_freq_33}")
+        self.ui.MI_pf_lb.setText(f"{MI_pf_11}<br>{MI_pf_33}")
+        self.ui.MI_33VSwellR_lb.setText(MI_33VswellR)
+        self.ui.MI_33VSwellY_lb.setText(MI_33VswellY)
+        self.ui.MI_33VSwellB_lb.setText(MI_33VswellB)
+        self.ui.MI_33VSagR_lb.setText(MI_33VsagR)
+        self.ui.MI_33VSagY_lb.setText(MI_33VsagY)
+        self.ui.MI_33VSagB_lb.setText(MI_33VsagB)
+        self.ui.MI_11VSwellR_lb.setText(MI_11VswellR)
+        self.ui.MI_11VSwellY_lb.setText(MI_11VswellY)
+        self.ui.MI_11VSwellB_lb.setText(MI_11VswellB)
+        self.ui.MI_11VSagR_lb.setText(MI_11VsagR)
+        self.ui.MI_11VSagY_lb.setText(MI_11VsagY)
+        self.ui.MI_11VSagB_lb.setText(MI_11VsagB)
+        self.ui.MI_idlehours_lb.setText(f"{MI_11kvidlehours}<br>{MI_33kvidlehours}")
+        self.ui.MI_highkwh_lb.setText(MI_high_kwh)
+
+        #Set the return text to the referred lables and display 
+        self.ui.In_kwh_lb.setText(In_kwh)
+        self.ui.In_freq_lb.setText(In_freq)
+        self.ui.In_pf_lb.setText(In_pf)
+        self.ui.In_VswellR_lb.setText(In_VswellR)
+        self.ui.In_VswellY_lb.setText(In_VswellY)
+        self.ui.In_VswellB_lb.setText(In_VswellB)
+        self.ui.In_VsagR_lb.setText(In_VsagR)
+        self.ui.In_VsagY_lb.setText(In_VsagY)
+        self.ui.In_VsagB_lb.setText(In_VsagB)
+        self.ui.In_idlehours_lb.setText(In_idlehrs)
 
         #Set the return text to the referred lables and display
-        self.ui.In_VswellR_lb.setText(r25)
-        self.ui.In_VswellY_lb.setText(r26)
-        self.ui.In_VswellB_lb.setText(r27)
-        self.ui.In_VsagR_lb.setText(r28)
-        self.ui.In_VsagY_lb.setText(r29)
-        self.ui.In_VsagB_lb.setText(r30)
-        self.ui.In_idlehours_lb.setText(r31)
-
-        #Set the return text to the referred lables and display
-        self.ui.BI_kwh_lb.setText(r32)
-        self.ui.BI_idlehours_lb.setText('\n'.join(r33))
-        self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")
+        self.ui.BI_kwh_lb.setText(BI_kwh)
+        self.ui.BI_idlehours_lb.setText('\n'.join(BI_idlehrs))
+        self.ui.BI_highkwh_lb.setText(f"{BI_kwhMax}<br>{BI_kwhMin}")
 
         # Connect the single slot function to both dateChanged signals for Analytics
-        self.ui.dateEdit.dateChanged.connect(self.call_graphs)
-        self.ui.dateEdit_6.dateChanged.connect(self.call_graphs)
+        self.ui.From_date.dateChanged.connect(self.call_graphs)
+        self.ui.To_date.dateChanged.connect(self.call_graphs)
         # Connect the single slot function to both dateChanged signals for Insights
-        self.ui.dateEdit_3.dateChanged.connect(self.update_all_chords)
-        self.ui.dateEdit_4.dateChanged.connect(self.update_all_chords)
+        self.ui.From_date_Insights.dateChanged.connect(self.update_all_chords)
+        self.ui.To_date_Insights.dateChanged.connect(self.update_all_chords)
 
 #Connecting Signals to the buttons      
     def on_home_btn_1_clicked(self):
@@ -301,96 +305,96 @@ class MainWindow(QMainWindow):
         self.change_fre_graphs(selected_meter)
     def update_all_graphs(self):
         # Get the updated values of from_date and to_date from the dateEdit widgets
-        from_date = self.ui.dateEdit.date().toPyDate()
-        to_date = self.ui.dateEdit_6.date().toPyDate()
+        from_date = self.ui.From_date.date().toPyDate()
+        to_date = self.ui.To_date.date().toPyDate()
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
         #energy centers graphs
-        total_energy_consumption(self,from_ts, to_ts)
-        centerwise_piechart(self,from_ts, to_ts)
-        weekly_graph(self,from_ts, to_ts)
+        EnergyPlotter.total_energy_consumption(self,from_ts, to_ts)
+        EnergyPlotter.centerwise_piechart(self,from_ts, to_ts)
+        EnergyPlotter.weekly_graph(self,from_ts, to_ts)
         #Incomers Graphs
-        total_incomer_supply(self,from_ts, to_ts)
+        IncomerPlotter.total_incomer_supply(self,from_ts, to_ts)
         #EC02 graphs
-        ec02_energy_consumption(self,from_ts, to_ts)
-        ec02_meter_piechart(self,from_ts, to_ts)
-        ec02_fre_deviations(self,from_ts,to_ts)
-        ec02_PF_deviations(self,from_ts,to_ts)
-        ec02_Vswell_Vsag(self,from_ts,to_ts)
+        EC02Plotter.ec02_energy_consumption(self,from_ts, to_ts)
+        EC02Plotter.ec02_meter_piechart(self,from_ts, to_ts)
+        EC02Plotter.ec02_fre_deviations(self,from_ts,to_ts)
+        EC02Plotter.ec02_PF_deviations(self,from_ts,to_ts)
+        EC02Plotter.ec02_Vswell_Vsag(self,from_ts,to_ts)
         #EC03 graphs
-        ec03_energy_consumption(self,from_ts, to_ts)
-        ec03_meter_piechart(self,from_ts,to_ts)
-        ec03_fre_deviations(self,from_ts,to_ts)
-        ec03_PF_deviations(self,from_ts,to_ts)    
-        ec03_Vswell_Vsag(self,from_ts,to_ts)   
+        EC03Plotter.ec03_energy_consumption(self,from_ts, to_ts)
+        EC03Plotter.ec03_meter_piechart(self,from_ts,to_ts)
+        EC03Plotter.ec03_fre_deviations(self,from_ts,to_ts)
+        EC03Plotter.ec03_PF_deviations(self,from_ts,to_ts)    
+        EC03Plotter.ec03_Vswell_Vsag(self,from_ts,to_ts)   
     def change_voltage_graphs(self, selected_meter):
-        from_date = self.ui.dateEdit.date().toPyDate()
-        to_date = self.ui.dateEdit_6.date().toPyDate()
+        from_date = self.ui.From_date.date().toPyDate()
+        to_date = self.ui.To_date.date().toPyDate()
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
         sender = self.sender()
         if sender == self.ui.incomer_cb:
-            frame = self.ui.frame_5
+            frame = self.ui.incomer_V_frame
             print("frame5")
         elif sender == self.ui.ec02_meter_cb:
-            frame = self.ui.frame_12
+            frame = self.ui.ec02_V_frame
             print("frame12")
         elif sender == self.ui.ec03_meter_cb:
-            frame = self.ui.frame_16
+            frame = self.ui.ec03_V_frame
             print("frame16")
         else:
             frame = None
         self.voltage(from_ts, to_ts, selected_meter,frame)
     def change_current_graphs(self, selected_meter):
-        from_date = self.ui.dateEdit.date().toPyDate()
-        to_date = self.ui.dateEdit_6.date().toPyDate()
+        from_date = self.ui.From_date.date().toPyDate()
+        to_date = self.ui.To_date.date().toPyDate()
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
         sender = self.sender()
         if sender == self.ui.incomer_cb:
-            frame = self.ui.frame_6
+            frame = self.ui.incomer_I_frame
             print("frame6")
         elif sender == self.ui.ec02_meter_cb:
-            frame = self.ui.frame_13
+            frame = self.ui.ec02_I_frame
             print("frame13")
         elif sender == self.ui.ec03_meter_cb:
-            frame = self.ui.frame_17
+            frame = self.ui.ec03_I_frame
             print("frame17")
         else:
             frame = None
         self.current(from_ts, to_ts, selected_meter,frame)
     def change_pf_graphs(self, selected_meter):
-        from_date = self.ui.dateEdit.date().toPyDate()
-        to_date = self.ui.dateEdit_6.date().toPyDate()
+        from_date = self.ui.From_date.date().toPyDate()
+        to_date = self.ui.To_date.date().toPyDate()
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
         sender = self.sender()
         if sender == self.ui.incomer_cb:
-            frame = self.ui.frame_7
+            frame = self.ui.incomer_PF_frame
             print("frame6")
         elif sender == self.ui.ec02_meter_cb:
-            frame = self.ui.frame_14
+            frame = self.ui.ec02_PF_frame
             print("frame13")
         elif sender == self.ui.ec03_meter_cb:
-            frame = self.ui.frame_18
+            frame = self.ui.ec03_PF_frame
             print("frame17")
         else:
             frame = None
         self.powerfactor(from_ts, to_ts, selected_meter,frame)
     def change_fre_graphs(self, selected_meter):
-        from_date = self.ui.dateEdit.date().toPyDate()
-        to_date = self.ui.dateEdit_6.date().toPyDate()
+        from_date = self.ui.From_date.date().toPyDate()
+        to_date = self.ui.To_date.date().toPyDate()
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
         sender = self.sender()
         if sender == self.ui.incomer_cb:
-            frame = self.ui.frame_8
+            frame = self.ui.incomer_Freq_frame
             print("frame6")
         elif sender == self.ui.ec02_meter_cb:
-            frame = self.ui.frame_19
+            frame = self.ui.ec02_Freq_frame
             print("frame13")
         elif sender == self.ui.ec03_meter_cb:
-            frame = self.ui.frame_23
+            frame = self.ui.ec03_Freq_frame
             print("frame17")
         else:
             frame = None
@@ -398,98 +402,100 @@ class MainWindow(QMainWindow):
 
 #Update all the chords when the date is changed
     def update_all_chords(self):
-        from_date = self.ui.dateEdit_3.date().toPyDate()
-        to_date = self.ui.dateEdit_4.date().toPyDate()
-        from_ts = pd.Timestamp(from_date)
-        to_ts = pd.Timestamp(to_date)
+        from_date = self.ui.From_date_Insights.date().toPyDate()
+        to_date = self.ui.To_date_Insights.date().toPyDate()
+        from_ts1 = pd.Timestamp(from_date)
+        to_ts1 = pd.Timestamp(to_date)
 
-        r1,r2 = self.MI_kwh(from_ts, to_ts)
-        r3,r4= self.MI_frequency(from_ts,to_ts)
-        r5,r6=self.MI_powerfactor(from_ts,to_ts)
-        r21=self.MI_high_kwh(from_ts,to_ts)
-        r7,r8,r9,r10,r11,r12=self.MI_33kv_Vswell_Vsag(from_ts,to_ts)
-        r13,r14,r15,r16,r17,r18=self.MI_11kv_Vswell_Vsag(from_ts,to_ts)
-        r19,r20=self.MI_idlehours(from_ts,to_ts)
-       
-        r22=self.In_kwh(from_ts, to_ts)
-        r23=self.In_frequency(from_ts,to_ts)
-        r24=self.In_powerfactor(from_ts,to_ts)
-        r25,r26,r27,r28,r29,r30=self.In_Vswell_Vsag(from_ts,to_ts)
-        r31=self.In_idlehours(from_ts,to_ts)
+        MI_kwh11,MI_kwh33 = self.MI_kwh(from_ts1, to_ts1)
+        MI_freq_11,MI_freq_33= self.MI_frequency(from_ts1,to_ts1)
+        MI_pf_11,MI_pf_33=self.MI_powerfactor(from_ts1,to_ts1)
+        MI_high_kwh=self.MI_high_kwh(from_ts1,to_ts1)
+        MI_33VswellR,MI_33VswellY,MI_33VswellB,MI_33VsagR,MI_33VsagY,MI_33VsagB=self.MI_33kv_Vswell_Vsag(from_ts1,to_ts1)
+        MI_11VswellR,MI_11VswellY,MI_11VswellB,MI_11VsagR,MI_11VsagY,MI_11VsagB=self.MI_11kv_Vswell_Vsag(from_ts1,to_ts1)
+        MI_11kvidlehours,MI_33kvidlehours=self.MI_idlehours(from_ts1,to_ts1)
 
-        r32=self.BI_kwh(from_ts,to_ts)
-        r33=self.BI_idlehours(from_ts, to_ts)
-        r34=self.BI_kwh_max(from_ts,to_ts)
-        r35=self.BI_kwh_min(from_ts,to_ts)
+        In_kwh=self.In_kwh(from_ts1, to_ts1)
+        In_freq=self.In_frequency(from_ts1,to_ts1)
+        In_pf=self.In_powerfactor(from_ts1,to_ts1)
+        In_VswellR,In_VswellY,In_VswellB,In_VsagR,In_VsagY,In_VsagB=self.In_Vswell_Vsag(from_ts1,to_ts1)
+        In_idlehrs=self.In_idlehours(from_ts1,to_ts1)
 
-        self.ui.MI_kwh_lb.setText(f"{r1}<br>{r2}")
-        self.ui.MI_feq_lb.setText(f"{r3}<br>{r4}")
-        self.ui.MI_pf_lb.setText(f"{r5}<br>{r6}")
-        self.ui.MI_33VSwellR_lb.setText(r7)
-        self.ui.MI_33VSwellY_lb.setText(r8)
-        self.ui.MI_33VSwellB_lb.setText(r9)
-        self.ui.MI_33VSagR_lb.setText(r10)
-        self.ui.MI_33VSagY_lb.setText(r11)
-        self.ui.MI_33VSagB_lb.setText(r12)
-        self.ui.MI_11VSwellR_lb.setText(r13)
-        self.ui.MI_11VSwellY_lb.setText(r14)
-        self.ui.MI_11VSwellB_lb.setText(r15)
-        self.ui.MI_11VSagR_lb.setText(r16)
-        self.ui.MI_11VSagY_lb.setText(r17)
-        self.ui.MI_11VSagB_lb.setText(r18)
-        self.ui.MI_idlehours_lb.setText(f"{r19}<br>{r20}")
-        self.ui.MI_highkwh_lb.setText(r21)
-        self.ui.In_kwh_lb.setText(r22)
-        self.ui.In_freq_lb.setText(r23)
-        self.ui.In_pf_lb.setText(r24)
 
-        self.ui.In_VswellR_lb.setText(r25)
-        self.ui.In_VswellY_lb.setText(r26)
-        self.ui.In_VswellB_lb.setText(r27)
-        self.ui.In_VsagR_lb.setText(r28)
-        self.ui.In_VsagY_lb.setText(r29)
-        self.ui.In_VsagB_lb.setText(r30)
+        BI_kwh=self.BI_kwh(from_ts1,to_ts1)
+        BI_idlehrs=self.BI_idlehours(from_ts1, to_ts1)
+        BI_kwhMax=self.BI_kwh_max(from_ts1,to_ts1)
+        BI_kwhMin=self.BI_kwh_min(from_ts1,to_ts1)
 
-        self.ui.In_idlehours_lb.setText(r31)
-        self.ui.BI_kwh_lb.setText(r32)
-        self.ui.BI_idlehours_lb.setText('\n'.join(r33))
-        self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")
+        self.ui.MI_kwh_lb.setText(f"{MI_kwh11}<br>{MI_kwh33}") 
+        self.ui.MI_feq_lb.setText(f"{MI_freq_11}<br>{MI_freq_33}")
+        self.ui.MI_pf_lb.setText(f"{MI_pf_11}<br>{MI_pf_33}")
+        self.ui.MI_33VSwellR_lb.setText(MI_33VswellR)
+        self.ui.MI_33VSwellY_lb.setText(MI_33VswellY)
+        self.ui.MI_33VSwellB_lb.setText(MI_33VswellB)
+        self.ui.MI_33VSagR_lb.setText(MI_33VsagR)
+        self.ui.MI_33VSagY_lb.setText(MI_33VsagY)
+        self.ui.MI_33VSagB_lb.setText(MI_33VsagB)
+        self.ui.MI_11VSwellR_lb.setText(MI_11VswellR)
+        self.ui.MI_11VSwellY_lb.setText(MI_11VswellY)
+        self.ui.MI_11VSwellB_lb.setText(MI_11VswellB)
+        self.ui.MI_11VSagR_lb.setText(MI_11VsagR)
+        self.ui.MI_11VSagY_lb.setText(MI_11VsagY)
+        self.ui.MI_11VSagB_lb.setText(MI_11VsagB)
+        self.ui.MI_idlehours_lb.setText(f"{MI_11kvidlehours}<br>{MI_33kvidlehours}")
+        self.ui.MI_highkwh_lb.setText(MI_high_kwh)
+
+        self.ui.In_kwh_lb.setText(In_kwh)
+        self.ui.In_freq_lb.setText(In_freq)
+        self.ui.In_pf_lb.setText(In_pf)
+        self.ui.In_VswellR_lb.setText(In_VswellR)
+        self.ui.In_VswellY_lb.setText(In_VswellY)
+        self.ui.In_VswellB_lb.setText(In_VswellB)
+        self.ui.In_VsagR_lb.setText(In_VsagR)
+        self.ui.In_VsagY_lb.setText(In_VsagY)
+        self.ui.In_VsagB_lb.setText(In_VsagB)
+        self.ui.In_idlehours_lb.setText(In_idlehrs)
+
+        self.ui.BI_kwh_lb.setText(BI_kwh)
+        self.ui.BI_idlehours_lb.setText('\n'.join(BI_idlehrs))
+        self.ui.BI_highkwh_lb.setText(f"{BI_kwhMax}<br>{BI_kwhMin}")
     def update_incomer_chords(self):
-        from_date = self.ui.dateEdit_3.date().toPyDate()
-        to_date = self.ui.dateEdit_4.date().toPyDate()
-        from_ts = pd.Timestamp(from_date)
-        to_ts = pd.Timestamp(to_date)
+        from_date = self.ui.From_date_Insights.date().toPyDate()
+        to_date = self.ui.To_date_Insights.date().toPyDate()
+        from_ts1 = pd.Timestamp(from_date)
+        to_ts1 = pd.Timestamp(to_date)
 
-        r22=self.In_kwh(from_ts, to_ts)
-        r23=self.In_frequency(from_ts,to_ts)
-        r24=self.In_powerfactor(from_ts,to_ts)
-        r25,r26,r27,r28,r29,r30=self.In_Vswell_Vsag(from_ts,to_ts)
-        r31=self.In_idlehours(from_ts,to_ts)
+        In_kwh=self.In_kwh(from_ts1, to_ts1)
+        In_freq=self.In_frequency(from_ts1,to_ts1)
+        In_pf=self.In_powerfactor(from_ts1,to_ts1)
+        In_VswellR,In_VswellY,In_VswellB,In_VsagR,In_VsagY,In_VsagB=self.In_Vswell_Vsag(from_ts1,to_ts1)
+        In_idlehrs=self.In_idlehours(from_ts1,to_ts1)
 
-        self.ui.In_kwh_lb.setText(r22)
-        self.ui.In_freq_lb.setText(r23)
-        self.ui.In_pf_lb.setText(r24)
-        self.ui.In_VswellR_lb.setText(r25)
-        self.ui.In_VswellY_lb.setText(r26)
-        self.ui.In_VswellB_lb.setText(r27)
-        self.ui.In_VsagR_lb.setText(r28)
-        self.ui.In_VsagY_lb.setText(r29)
-        self.ui.In_VsagB_lb.setText(r30)
-        self.ui.In_idlehours_lb.setText(r31)
+        self.ui.In_kwh_lb.setText(In_kwh)
+        self.ui.In_freq_lb.setText(In_freq)
+        self.ui.In_pf_lb.setText(In_pf)
+        self.ui.In_VswellR_lb.setText(In_VswellR)
+        self.ui.In_VswellY_lb.setText(In_VswellY)
+        self.ui.In_VswellB_lb.setText(In_VswellB)
+        self.ui.In_VsagR_lb.setText(In_VsagR)
+        self.ui.In_VsagY_lb.setText(In_VsagY)
+        self.ui.In_VsagB_lb.setText(In_VsagB)
+        self.ui.In_idlehours_lb.setText(In_idlehrs)
     def update_building_chords(self):
-        from_date = self.ui.dateEdit_3.date().toPyDate()
-        to_date = self.ui.dateEdit_4.date().toPyDate()
-        from_ts = pd.Timestamp(from_date)
-        to_ts = pd.Timestamp(to_date)
+        from_date = self.ui.From_date_Insights.date().toPyDate()
+        to_date = self.ui.To_date_Insights.date().toPyDate()
+        from_ts1 = pd.Timestamp(from_date)
+        to_ts1 = pd.Timestamp(to_date)
 
-        r32=self.BI_kwh(from_ts,to_ts)
-        r33=self.BI_idlehours(from_ts, to_ts)
-        r34=self.BI_kwh_max(from_ts,to_ts)
-        r35=self.BI_kwh_min(from_ts,to_ts)
+        BI_kwh=self.BI_kwh(from_ts1,to_ts1)
+        BI_idlehrs=self.BI_idlehours(from_ts1, to_ts1)
+        BI_kwhMax=self.BI_kwh_max(from_ts1,to_ts1)
+        BI_kwhMin=self.BI_kwh_min(from_ts1,to_ts1)
 
-        self.ui.BI_kwh_lb.setText(r32)
-        self.ui.BI_idlehours_lb.setText('\n'.join(r33))
-        self.ui.BI_highkwh_lb.setText(f"{r34}<br>{r35}")   
+
+        self.ui.BI_kwh_lb.setText(BI_kwh)
+        self.ui.BI_idlehours_lb.setText('\n'.join(BI_idlehrs))
+        self.ui.BI_highkwh_lb.setText(f"{BI_kwhMax}<br>{BI_kwhMin}")  
     
     def voltage(self, from_ts, to_ts, selected_meter, frame):
         dfir = df2[(df2['meter'] == selected_meter)]
@@ -541,7 +547,7 @@ class MainWindow(QMainWindow):
 
         plot1 = QWebEngineView()
         plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
-        frame_layout = self.ui.frame_14.layout()
+        # frame_layout = self.ui.frame_14.layout()
         if frame is not None:
             frame_layout = frame.layout()
             if frame_layout is not None:

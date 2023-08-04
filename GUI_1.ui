@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1216</width>
+    <width>1242</width>
     <height>895</height>
    </rect>
   </property>
@@ -184,7 +184,7 @@ QFrame#fram {
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_13">
@@ -211,7 +211,7 @@ QFrame#fram {
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QDateEdit" name="dateEdit">
+            <widget class="QDateEdit" name="From_date">
              <property name="maximumDate">
               <date>
                <year>2022</year>
@@ -254,7 +254,7 @@ QFrame#fram {
             </widget>
            </item>
            <item row="0" column="3">
-            <widget class="QDateEdit" name="dateEdit_6">
+            <widget class="QDateEdit" name="To_date">
              <property name="maximumDate">
               <date>
                <year>2022</year>
@@ -425,14 +425,14 @@ QFrame#fram {
               <enum>QFrame::Raised</enum>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="page_12">
               <layout class="QGridLayout" name="gridLayout_2">
                <item row="0" column="0">
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <item>
-                  <widget class="QFrame" name="fram">
+                  <widget class="QFrame" name="Energy_kwh_frame">
                    <property name="styleSheet">
                     <string notr="true">QFrame#fram {
     border-radius: 10px; /* Adjust the radius as per your requirement */
@@ -453,7 +453,7 @@ QFrame#fram {
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_11">
                    <item>
-                    <widget class="QFrame" name="frame_2">
+                    <widget class="QFrame" name="Energy_weekplot_frame">
                      <property name="styleSheet">
                       <string notr="true">QFrame#frame_2{
     border-radius: 10px; /* Adjust the radius as per your requirement */
@@ -471,7 +471,7 @@ QFrame#fram {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QFrame" name="frame_3">
+                    <widget class="QFrame" name="Energy_pie_frame">
                      <property name="styleSheet">
                       <string notr="true">QFrame#frame_3 {
     border-radius: 10px;
@@ -505,8 +505,8 @@ QFrame#fram {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>0</y>
-                    <width>952</width>
+                    <y>-522</y>
+                    <width>950</width>
                     <height>1500</height>
                    </rect>
                   </property>
@@ -540,7 +540,7 @@ QFrame#fram {
                       </layout>
                      </item>
                      <item>
-                      <widget class="QFrame" name="frame_4">
+                      <widget class="QFrame" name="incomer_kwh_frame">
                        <property name="styleSheet">
                         <string notr="true">QFrame#frame_4 {
     border-radius: 10px;
@@ -560,7 +560,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_12">
                        <item>
-                        <widget class="QFrame" name="frame_5">
+                        <widget class="QFrame" name="incomer_V_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_5 {
     border-radius: 10px;
@@ -578,7 +578,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_6">
+                        <widget class="QFrame" name="incomer_I_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_6 {
     border-radius: 10px;
@@ -600,7 +600,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_13">
                        <item>
-                        <widget class="QFrame" name="frame_7">
+                        <widget class="QFrame" name="incomer_PF_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_7 {
     border-radius: 10px;
@@ -618,7 +618,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_8">
+                        <widget class="QFrame" name="incomer_Freq_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_8 {
     border-radius: 10px;
@@ -657,7 +657,7 @@ QFrame#fram {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>952</width>
+                    <width>950</width>
                     <height>2000</height>
                    </rect>
                   </property>
@@ -707,7 +707,7 @@ QFrame#fram {
                       </layout>
                      </item>
                      <item>
-                      <widget class="QFrame" name="frame_9">
+                      <widget class="QFrame" name="ec02_kwh_frame">
                        <property name="styleSheet">
                         <string notr="true">QFrame#frame_9 {
     border-radius: 10px;
@@ -727,7 +727,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_26">
                        <item>
-                        <widget class="QFrame" name="frame_11">
+                        <widget class="QFrame" name="ec02_piechart_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_11 {
     border-radius: 10px;
@@ -745,7 +745,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_12">
+                        <widget class="QFrame" name="ec02_V_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_12 {
     border-radius: 10px;
@@ -767,7 +767,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_27">
                        <item>
-                        <widget class="QFrame" name="frame_13">
+                        <widget class="QFrame" name="ec02_I_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_13 {
     border-radius: 10px;
@@ -785,7 +785,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_14">
+                        <widget class="QFrame" name="ec02_PF_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_14 {
     border-radius: 10px;
@@ -807,7 +807,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_31">
                        <item>
-                        <widget class="QFrame" name="frame_19">
+                        <widget class="QFrame" name="ec02_Freq_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_19 {
     border-radius: 10px;
@@ -825,7 +825,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_20">
+                        <widget class="QFrame" name="ec02_Vswellsag_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_20 {
     border-radius: 10px;
@@ -847,7 +847,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_32">
                        <item>
-                        <widget class="QFrame" name="frame_21">
+                        <widget class="QFrame" name="ec02_Fdev_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_21 {
     border-radius: 10px;
@@ -865,7 +865,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_22">
+                        <widget class="QFrame" name="ec02_PFdev_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_22 {
     border-radius: 10px;
@@ -903,8 +903,8 @@ QFrame#fram {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>0</y>
-                    <width>952</width>
+                    <y>-1317</y>
+                    <width>976</width>
                     <height>2000</height>
                    </rect>
                   </property>
@@ -954,7 +954,7 @@ QFrame#fram {
                       </layout>
                      </item>
                      <item>
-                      <widget class="QFrame" name="frame_10">
+                      <widget class="QFrame" name="ec03_kwh_frame">
                        <property name="styleSheet">
                         <string notr="true">QFrame#frame_10 {
     border-radius: 10px;
@@ -974,7 +974,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_29">
                        <item>
-                        <widget class="QFrame" name="frame_15">
+                        <widget class="QFrame" name="ec03_piechart_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_15 {
     border-radius: 10px;
@@ -992,7 +992,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_16">
+                        <widget class="QFrame" name="ec03_V_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_16 {
     border-radius: 10px;
@@ -1014,7 +1014,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_30">
                        <item>
-                        <widget class="QFrame" name="frame_17">
+                        <widget class="QFrame" name="ec03_I_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_17 {
     border-radius: 10px;
@@ -1032,7 +1032,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_18">
+                        <widget class="QFrame" name="ec03_PF_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_18 {
     border-radius: 10px;
@@ -1054,7 +1054,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_33">
                        <item>
-                        <widget class="QFrame" name="frame_23">
+                        <widget class="QFrame" name="ec03_Freq_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_23 {
     border-radius: 10px;
@@ -1072,7 +1072,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_24">
+                        <widget class="QFrame" name="ec03_Vswellsag_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_24 {
     border-radius: 10px;
@@ -1094,7 +1094,7 @@ QFrame#fram {
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_34">
                        <item>
-                        <widget class="QFrame" name="frame_25">
+                        <widget class="QFrame" name="ec03_Fdev_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_25 {
     border-radius: 10px;
@@ -1112,7 +1112,7 @@ QFrame#fram {
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="frame_26">
+                        <widget class="QFrame" name="ec03_PFdev_frame">
                          <property name="styleSheet">
                           <string notr="true">QFrame#frame_26 {
     border-radius: 10px;
@@ -1164,7 +1164,7 @@ QFrame#fram {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>974</width>
+                <width>998</width>
                 <height>1500</height>
                </rect>
               </property>
@@ -1209,7 +1209,7 @@ QFrame#fram {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDateEdit" name="dateEdit_3">
+                  <widget class="QDateEdit" name="From_date_Insights">
                    <property name="frame">
                     <bool>true</bool>
                    </property>
@@ -1264,7 +1264,7 @@ QFrame#fram {
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDateEdit" name="dateEdit_4">
+                  <widget class="QDateEdit" name="To_date_Insights">
                    <property name="alignment">
                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                    </property>
@@ -2576,7 +2576,7 @@ background-color: rgb(203, 229, 253);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>974</width>
+                <width>81</width>
                 <height>2000</height>
                </rect>
               </property>

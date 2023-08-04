@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1216, 895)
+        MainWindow.resize(1242, 895)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("#centralwidget {\n"
 "        background-color: #FFFFFF;\n"
@@ -117,12 +117,12 @@ class Ui_MainWindow(object):
         self.label_37.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label_37.setObjectName("label_37")
         self.gridLayout_13.addWidget(self.label_37, 0, 0, 1, 1)
-        self.dateEdit = QtWidgets.QDateEdit(self.page)
-        self.dateEdit.setMaximumDate(QtCore.QDate(2022, 9, 30))
-        self.dateEdit.setMinimumDate(QtCore.QDate(2022, 6, 6))
-        self.dateEdit.setCalendarPopup(True)
-        self.dateEdit.setObjectName("dateEdit")
-        self.gridLayout_13.addWidget(self.dateEdit, 0, 1, 1, 1)
+        self.From_date = QtWidgets.QDateEdit(self.page)
+        self.From_date.setMaximumDate(QtCore.QDate(2022, 9, 30))
+        self.From_date.setMinimumDate(QtCore.QDate(2022, 6, 6))
+        self.From_date.setCalendarPopup(True)
+        self.From_date.setObjectName("From_date")
+        self.gridLayout_13.addWidget(self.From_date, 0, 1, 1, 1)
         self.label_45 = QtWidgets.QLabel(self.page)
         font = QtGui.QFont()
         font.setBold(True)
@@ -133,12 +133,12 @@ class Ui_MainWindow(object):
         self.label_45.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label_45.setObjectName("label_45")
         self.gridLayout_13.addWidget(self.label_45, 0, 2, 1, 1)
-        self.dateEdit_6 = QtWidgets.QDateEdit(self.page)
-        self.dateEdit_6.setMaximumDate(QtCore.QDate(2022, 9, 29))
-        self.dateEdit_6.setMinimumDate(QtCore.QDate(2022, 6, 14))
-        self.dateEdit_6.setCalendarPopup(True)
-        self.dateEdit_6.setObjectName("dateEdit_6")
-        self.gridLayout_13.addWidget(self.dateEdit_6, 0, 3, 1, 1)
+        self.To_date = QtWidgets.QDateEdit(self.page)
+        self.To_date.setMaximumDate(QtCore.QDate(2022, 9, 29))
+        self.To_date.setMinimumDate(QtCore.QDate(2022, 6, 14))
+        self.To_date.setCalendarPopup(True)
+        self.To_date.setObjectName("To_date")
+        self.gridLayout_13.addWidget(self.To_date, 0, 3, 1, 1)
         self.icon_only_widget_2 = QtWidgets.QWidget(self.page)
         self.icon_only_widget_2.setObjectName("icon_only_widget_2")
         self.horizontalLayout_36 = QtWidgets.QHBoxLayout(self.icon_only_widget_2)
@@ -203,42 +203,42 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.fram = QtWidgets.QFrame(self.page_12)
-        self.fram.setStyleSheet("QFrame#fram {\n"
+        self.Energy_kwh_frame = QtWidgets.QFrame(self.page_12)
+        self.Energy_kwh_frame.setStyleSheet("QFrame#fram {\n"
 "    border-radius: 10px; /* Adjust the radius as per your requirement */\n"
 "    border: 2px solid #c0c0c0; /* Optional: You can set a border color */\n"
 "    background-color: #ffffff; /* Optional: You can set a background color #f0f0f0*/\n"
 "    border-style: outset; /* This gives the \"Raised\" shadow effect */\n"
 "}\n"
 "")
-        self.fram.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.fram.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.fram.setObjectName("fram")
-        self.verticalLayout_6.addWidget(self.fram)
+        self.Energy_kwh_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.Energy_kwh_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Energy_kwh_frame.setObjectName("Energy_kwh_frame")
+        self.verticalLayout_6.addWidget(self.Energy_kwh_frame)
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.frame_2 = QtWidgets.QFrame(self.page_12)
-        self.frame_2.setStyleSheet("QFrame#frame_2{\n"
+        self.Energy_weekplot_frame = QtWidgets.QFrame(self.page_12)
+        self.Energy_weekplot_frame.setStyleSheet("QFrame#frame_2{\n"
 "    border-radius: 10px; /* Adjust the radius as per your requirement */\n"
 "    border: 2px solid #c0c0c0; /* Optional: You can set a border color */\n"
 "    background-color: #ffffff; /* Optional: You can set a background color #f0f0f0*/\n"
 "    border-style: outset; /* This gives the \"Raised\" shadow effect */\n"
 "}")
-        self.frame_2.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.horizontalLayout_11.addWidget(self.frame_2)
-        self.frame_3 = QtWidgets.QFrame(self.page_12)
-        self.frame_3.setStyleSheet("QFrame#frame_3 {\n"
+        self.Energy_weekplot_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.Energy_weekplot_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Energy_weekplot_frame.setObjectName("Energy_weekplot_frame")
+        self.horizontalLayout_11.addWidget(self.Energy_weekplot_frame)
+        self.Energy_pie_frame = QtWidgets.QFrame(self.page_12)
+        self.Energy_pie_frame.setStyleSheet("QFrame#frame_3 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_3.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.horizontalLayout_11.addWidget(self.frame_3)
+        self.Energy_pie_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.Energy_pie_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Energy_pie_frame.setObjectName("Energy_pie_frame")
+        self.horizontalLayout_11.addWidget(self.Energy_pie_frame)
         self.verticalLayout_6.addLayout(self.horizontalLayout_11)
         self.gridLayout_2.addLayout(self.verticalLayout_6, 0, 0, 1, 1)
         self.stackedWidget_3.addWidget(self.page_12)
@@ -250,7 +250,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 952, 1500))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -522, 950, 1500))
         self.scrollAreaWidgetContents.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_10 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -270,66 +270,66 @@ class Ui_MainWindow(object):
         self.incomer_cb.setObjectName("incomer_cb")
         self.horizontalLayout_7.addWidget(self.incomer_cb, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_7.addLayout(self.horizontalLayout_7)
-        self.frame_4 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_4.setStyleSheet("QFrame#frame_4 {\n"
+        self.incomer_kwh_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.incomer_kwh_frame.setStyleSheet("QFrame#frame_4 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_4.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_4.setObjectName("frame_4")
-        self.verticalLayout_7.addWidget(self.frame_4)
+        self.incomer_kwh_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.incomer_kwh_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.incomer_kwh_frame.setObjectName("incomer_kwh_frame")
+        self.verticalLayout_7.addWidget(self.incomer_kwh_frame)
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        self.frame_5 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_5.setStyleSheet("QFrame#frame_5 {\n"
+        self.incomer_V_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.incomer_V_frame.setStyleSheet("QFrame#frame_5 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_5.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.horizontalLayout_12.addWidget(self.frame_5)
-        self.frame_6 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_6.setStyleSheet("QFrame#frame_6 {\n"
+        self.incomer_V_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.incomer_V_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.incomer_V_frame.setObjectName("incomer_V_frame")
+        self.horizontalLayout_12.addWidget(self.incomer_V_frame)
+        self.incomer_I_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.incomer_I_frame.setStyleSheet("QFrame#frame_6 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_6.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_6.setObjectName("frame_6")
-        self.horizontalLayout_12.addWidget(self.frame_6)
+        self.incomer_I_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.incomer_I_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.incomer_I_frame.setObjectName("incomer_I_frame")
+        self.horizontalLayout_12.addWidget(self.incomer_I_frame)
         self.verticalLayout_7.addLayout(self.horizontalLayout_12)
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        self.frame_7 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_7.setStyleSheet("QFrame#frame_7 {\n"
+        self.incomer_PF_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.incomer_PF_frame.setStyleSheet("QFrame#frame_7 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_7.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_7.setObjectName("frame_7")
-        self.horizontalLayout_13.addWidget(self.frame_7)
-        self.frame_8 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_8.setStyleSheet("QFrame#frame_8 {\n"
+        self.incomer_PF_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.incomer_PF_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.incomer_PF_frame.setObjectName("incomer_PF_frame")
+        self.horizontalLayout_13.addWidget(self.incomer_PF_frame)
+        self.incomer_Freq_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.incomer_Freq_frame.setStyleSheet("QFrame#frame_8 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_8.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_8.setObjectName("frame_8")
-        self.horizontalLayout_13.addWidget(self.frame_8)
+        self.incomer_Freq_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.incomer_Freq_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.incomer_Freq_frame.setObjectName("incomer_Freq_frame")
+        self.horizontalLayout_13.addWidget(self.incomer_Freq_frame)
         self.verticalLayout_7.addLayout(self.horizontalLayout_13)
         self.gridLayout_10.addLayout(self.verticalLayout_7, 0, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
@@ -343,7 +343,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollArea_5.setObjectName("scrollArea_5")
         self.scrollAreaWidgetContents_4 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 952, 2000))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 950, 2000))
         self.scrollAreaWidgetContents_4.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_4)
@@ -373,116 +373,116 @@ class Ui_MainWindow(object):
         self.ec02_meter_cb.setObjectName("ec02_meter_cb")
         self.horizontalLayout_18.addWidget(self.ec02_meter_cb, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_16.addLayout(self.horizontalLayout_18)
-        self.frame_9 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_9.setStyleSheet("QFrame#frame_9 {\n"
+        self.ec02_kwh_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_kwh_frame.setStyleSheet("QFrame#frame_9 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_9.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_9.setObjectName("frame_9")
-        self.verticalLayout_16.addWidget(self.frame_9)
+        self.ec02_kwh_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_kwh_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_kwh_frame.setObjectName("ec02_kwh_frame")
+        self.verticalLayout_16.addWidget(self.ec02_kwh_frame)
         self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_26.setObjectName("horizontalLayout_26")
-        self.frame_11 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_11.setStyleSheet("QFrame#frame_11 {\n"
+        self.ec02_piechart_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_piechart_frame.setStyleSheet("QFrame#frame_11 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_11.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_11.setObjectName("frame_11")
-        self.horizontalLayout_26.addWidget(self.frame_11)
-        self.frame_12 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_12.setStyleSheet("QFrame#frame_12 {\n"
+        self.ec02_piechart_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_piechart_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_piechart_frame.setObjectName("ec02_piechart_frame")
+        self.horizontalLayout_26.addWidget(self.ec02_piechart_frame)
+        self.ec02_V_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_V_frame.setStyleSheet("QFrame#frame_12 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_12.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_12.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_12.setObjectName("frame_12")
-        self.horizontalLayout_26.addWidget(self.frame_12)
+        self.ec02_V_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_V_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_V_frame.setObjectName("ec02_V_frame")
+        self.horizontalLayout_26.addWidget(self.ec02_V_frame)
         self.verticalLayout_16.addLayout(self.horizontalLayout_26)
         self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_27.setObjectName("horizontalLayout_27")
-        self.frame_13 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_13.setStyleSheet("QFrame#frame_13 {\n"
+        self.ec02_I_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_I_frame.setStyleSheet("QFrame#frame_13 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_13.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_13.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_13.setObjectName("frame_13")
-        self.horizontalLayout_27.addWidget(self.frame_13)
-        self.frame_14 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_14.setStyleSheet("QFrame#frame_14 {\n"
+        self.ec02_I_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_I_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_I_frame.setObjectName("ec02_I_frame")
+        self.horizontalLayout_27.addWidget(self.ec02_I_frame)
+        self.ec02_PF_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_PF_frame.setStyleSheet("QFrame#frame_14 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_14.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_14.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_14.setObjectName("frame_14")
-        self.horizontalLayout_27.addWidget(self.frame_14)
+        self.ec02_PF_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_PF_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_PF_frame.setObjectName("ec02_PF_frame")
+        self.horizontalLayout_27.addWidget(self.ec02_PF_frame)
         self.verticalLayout_16.addLayout(self.horizontalLayout_27)
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
-        self.frame_19 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_19.setStyleSheet("QFrame#frame_19 {\n"
+        self.ec02_Freq_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_Freq_frame.setStyleSheet("QFrame#frame_19 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_19.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_19.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_19.setObjectName("frame_19")
-        self.horizontalLayout_31.addWidget(self.frame_19)
-        self.frame_20 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_20.setStyleSheet("QFrame#frame_20 {\n"
+        self.ec02_Freq_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_Freq_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_Freq_frame.setObjectName("ec02_Freq_frame")
+        self.horizontalLayout_31.addWidget(self.ec02_Freq_frame)
+        self.ec02_Vswellsag_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_Vswellsag_frame.setStyleSheet("QFrame#frame_20 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_20.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_20.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_20.setObjectName("frame_20")
-        self.horizontalLayout_31.addWidget(self.frame_20)
+        self.ec02_Vswellsag_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_Vswellsag_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_Vswellsag_frame.setObjectName("ec02_Vswellsag_frame")
+        self.horizontalLayout_31.addWidget(self.ec02_Vswellsag_frame)
         self.verticalLayout_16.addLayout(self.horizontalLayout_31)
         self.horizontalLayout_32 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_32.setObjectName("horizontalLayout_32")
-        self.frame_21 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_21.setStyleSheet("QFrame#frame_21 {\n"
+        self.ec02_Fdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_Fdev_frame.setStyleSheet("QFrame#frame_21 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_21.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_21.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_21.setObjectName("frame_21")
-        self.horizontalLayout_32.addWidget(self.frame_21)
-        self.frame_22 = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_22.setStyleSheet("QFrame#frame_22 {\n"
+        self.ec02_Fdev_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_Fdev_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_Fdev_frame.setObjectName("ec02_Fdev_frame")
+        self.horizontalLayout_32.addWidget(self.ec02_Fdev_frame)
+        self.ec02_PFdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
+        self.ec02_PFdev_frame.setStyleSheet("QFrame#frame_22 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_22.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_22.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_22.setObjectName("frame_22")
-        self.horizontalLayout_32.addWidget(self.frame_22)
+        self.ec02_PFdev_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec02_PFdev_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec02_PFdev_frame.setObjectName("ec02_PFdev_frame")
+        self.horizontalLayout_32.addWidget(self.ec02_PFdev_frame)
         self.verticalLayout_16.addLayout(self.horizontalLayout_32)
         self.gridLayout_8.addLayout(self.verticalLayout_16, 0, 0, 1, 1)
         self.scrollArea_5.setWidget(self.scrollAreaWidgetContents_4)
@@ -496,7 +496,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName("scrollArea_6")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 952, 2000))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, -1317, 976, 2000))
         self.scrollAreaWidgetContents_6.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_6)
@@ -526,116 +526,116 @@ class Ui_MainWindow(object):
         self.ec03_meter_cb.setObjectName("ec03_meter_cb")
         self.horizontalLayout_28.addWidget(self.ec03_meter_cb, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_17.addLayout(self.horizontalLayout_28)
-        self.frame_10 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_10.setStyleSheet("QFrame#frame_10 {\n"
+        self.ec03_kwh_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_kwh_frame.setStyleSheet("QFrame#frame_10 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_10.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_10.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_10.setObjectName("frame_10")
-        self.verticalLayout_17.addWidget(self.frame_10)
+        self.ec03_kwh_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_kwh_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_kwh_frame.setObjectName("ec03_kwh_frame")
+        self.verticalLayout_17.addWidget(self.ec03_kwh_frame)
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
-        self.frame_15 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_15.setStyleSheet("QFrame#frame_15 {\n"
+        self.ec03_piechart_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_piechart_frame.setStyleSheet("QFrame#frame_15 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_15.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_15.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_15.setObjectName("frame_15")
-        self.horizontalLayout_29.addWidget(self.frame_15)
-        self.frame_16 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_16.setStyleSheet("QFrame#frame_16 {\n"
+        self.ec03_piechart_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_piechart_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_piechart_frame.setObjectName("ec03_piechart_frame")
+        self.horizontalLayout_29.addWidget(self.ec03_piechart_frame)
+        self.ec03_V_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_V_frame.setStyleSheet("QFrame#frame_16 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_16.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_16.setObjectName("frame_16")
-        self.horizontalLayout_29.addWidget(self.frame_16)
+        self.ec03_V_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_V_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_V_frame.setObjectName("ec03_V_frame")
+        self.horizontalLayout_29.addWidget(self.ec03_V_frame)
         self.verticalLayout_17.addLayout(self.horizontalLayout_29)
         self.horizontalLayout_30 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_30.setObjectName("horizontalLayout_30")
-        self.frame_17 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_17.setStyleSheet("QFrame#frame_17 {\n"
+        self.ec03_I_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_I_frame.setStyleSheet("QFrame#frame_17 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_17.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_17.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_17.setObjectName("frame_17")
-        self.horizontalLayout_30.addWidget(self.frame_17)
-        self.frame_18 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_18.setStyleSheet("QFrame#frame_18 {\n"
+        self.ec03_I_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_I_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_I_frame.setObjectName("ec03_I_frame")
+        self.horizontalLayout_30.addWidget(self.ec03_I_frame)
+        self.ec03_PF_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_PF_frame.setStyleSheet("QFrame#frame_18 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_18.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_18.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_18.setObjectName("frame_18")
-        self.horizontalLayout_30.addWidget(self.frame_18)
+        self.ec03_PF_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_PF_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_PF_frame.setObjectName("ec03_PF_frame")
+        self.horizontalLayout_30.addWidget(self.ec03_PF_frame)
         self.verticalLayout_17.addLayout(self.horizontalLayout_30)
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
-        self.frame_23 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_23.setStyleSheet("QFrame#frame_23 {\n"
+        self.ec03_Freq_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_Freq_frame.setStyleSheet("QFrame#frame_23 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_23.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_23.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_23.setObjectName("frame_23")
-        self.horizontalLayout_33.addWidget(self.frame_23)
-        self.frame_24 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_24.setStyleSheet("QFrame#frame_24 {\n"
+        self.ec03_Freq_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_Freq_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_Freq_frame.setObjectName("ec03_Freq_frame")
+        self.horizontalLayout_33.addWidget(self.ec03_Freq_frame)
+        self.ec03_Vswellsag_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_Vswellsag_frame.setStyleSheet("QFrame#frame_24 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_24.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_24.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_24.setObjectName("frame_24")
-        self.horizontalLayout_33.addWidget(self.frame_24)
+        self.ec03_Vswellsag_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_Vswellsag_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_Vswellsag_frame.setObjectName("ec03_Vswellsag_frame")
+        self.horizontalLayout_33.addWidget(self.ec03_Vswellsag_frame)
         self.verticalLayout_17.addLayout(self.horizontalLayout_33)
         self.horizontalLayout_34 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_34.setObjectName("horizontalLayout_34")
-        self.frame_25 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_25.setStyleSheet("QFrame#frame_25 {\n"
+        self.ec03_Fdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_Fdev_frame.setStyleSheet("QFrame#frame_25 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_25.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_25.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_25.setObjectName("frame_25")
-        self.horizontalLayout_34.addWidget(self.frame_25)
-        self.frame_26 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.frame_26.setStyleSheet("QFrame#frame_26 {\n"
+        self.ec03_Fdev_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_Fdev_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_Fdev_frame.setObjectName("ec03_Fdev_frame")
+        self.horizontalLayout_34.addWidget(self.ec03_Fdev_frame)
+        self.ec03_PFdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
+        self.ec03_PFdev_frame.setStyleSheet("QFrame#frame_26 {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_26.setFrameShape(QtWidgets.QFrame.WinPanel)
-        self.frame_26.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_26.setObjectName("frame_26")
-        self.horizontalLayout_34.addWidget(self.frame_26)
+        self.ec03_PFdev_frame.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.ec03_PFdev_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.ec03_PFdev_frame.setObjectName("ec03_PFdev_frame")
+        self.horizontalLayout_34.addWidget(self.ec03_PFdev_frame)
         self.verticalLayout_17.addLayout(self.horizontalLayout_34)
         self.gridLayout_7.addLayout(self.verticalLayout_17, 0, 0, 1, 1)
         self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_6)
@@ -653,7 +653,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 974, 1500))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 998, 1500))
         self.scrollAreaWidgetContents_3.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents_3.setMouseTracking(False)
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
@@ -673,14 +673,14 @@ class Ui_MainWindow(object):
         self.label_35.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label_35.setObjectName("label_35")
         self.horizontalLayout_37.addWidget(self.label_35)
-        self.dateEdit_3 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_3)
-        self.dateEdit_3.setFrame(True)
-        self.dateEdit_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.dateEdit_3.setMaximumDate(QtCore.QDate(2022, 9, 30))
-        self.dateEdit_3.setMinimumDate(QtCore.QDate(2022, 6, 6))
-        self.dateEdit_3.setCalendarPopup(True)
-        self.dateEdit_3.setObjectName("dateEdit_3")
-        self.horizontalLayout_37.addWidget(self.dateEdit_3)
+        self.From_date_Insights = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_3)
+        self.From_date_Insights.setFrame(True)
+        self.From_date_Insights.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.From_date_Insights.setMaximumDate(QtCore.QDate(2022, 9, 30))
+        self.From_date_Insights.setMinimumDate(QtCore.QDate(2022, 6, 6))
+        self.From_date_Insights.setCalendarPopup(True)
+        self.From_date_Insights.setObjectName("From_date_Insights")
+        self.horizontalLayout_37.addWidget(self.From_date_Insights)
         self.label_36 = QtWidgets.QLabel(self.scrollAreaWidgetContents_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -696,13 +696,13 @@ class Ui_MainWindow(object):
         self.label_36.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.label_36.setObjectName("label_36")
         self.horizontalLayout_37.addWidget(self.label_36)
-        self.dateEdit_4 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_3)
-        self.dateEdit_4.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.dateEdit_4.setMaximumDate(QtCore.QDate(2022, 9, 29))
-        self.dateEdit_4.setMinimumDate(QtCore.QDate(2022, 6, 14))
-        self.dateEdit_4.setCalendarPopup(True)
-        self.dateEdit_4.setObjectName("dateEdit_4")
-        self.horizontalLayout_37.addWidget(self.dateEdit_4)
+        self.To_date_Insights = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_3)
+        self.To_date_Insights.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.To_date_Insights.setMaximumDate(QtCore.QDate(2022, 9, 29))
+        self.To_date_Insights.setMinimumDate(QtCore.QDate(2022, 6, 14))
+        self.To_date_Insights.setCalendarPopup(True)
+        self.To_date_Insights.setObjectName("To_date_Insights")
+        self.horizontalLayout_37.addWidget(self.To_date_Insights)
         self.verticalLayout_5.addLayout(self.horizontalLayout_37)
         self.label_13 = QtWidgets.QLabel(self.scrollAreaWidgetContents_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -1321,7 +1321,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 974, 2000))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 81, 2000))
         self.scrollAreaWidgetContents_2.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_2)
@@ -1562,8 +1562,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
-        self.stackedWidget_3.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget_3.setCurrentIndex(3)
         self.change_btn.toggled['bool'].connect(self.icon_only_widget.setVisible) # type: ignore
         self.change_btn.toggled['bool'].connect(self.full_menu_widget.setHidden) # type: ignore
         self.home_btn_1.toggled['bool'].connect(self.home_btn_2.setChecked) # type: ignore
