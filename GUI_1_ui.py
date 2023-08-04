@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'GUI_1.ui'
+# Form implementation generated from reading ui file 'c:\Users\20339181\OneDrive - L&T Construction\Documents\Git_PGL_project\GUI_1.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -1632,13 +1632,3 @@ class Ui_MainWindow(object):
         self.prediction_btn_2.setText(_translate("MainWindow", "Prediction"))
         self.exit_btn_2.setText(_translate("MainWindow", "Exit"))
 import resource_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())

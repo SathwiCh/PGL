@@ -6,19 +6,29 @@ import plotly.express as px
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 import pandas as pd
 
+#Read the Dataframes from the local
+#df--this variable refers to the dataset of Energy Center-2 (EC02)
 df=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
+
+#df1--this variable refers to the dataset of Energy Center-3 (EC03)
 df1=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec03.csv')
+
+#df2--this variable refers to the combined dataset of Energy Center-2 & 3 (whole dataset)
 df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
 print("Loading...")
+
+#Converting the Time column to the pandas datetime object
 df['Time column 1'] = df['Time column 1'].astype(str)
 df['Time column 1'] = pd.to_datetime(df['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 df1['Time column 1'] = df1['Time column 1'].astype(str)
 df1['Time column 1'] = pd.to_datetime(df1['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 df2['Time column 1'] = df2['Time column 1'].astype(str)
 df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-building2 = df[df['building'].isin(['TC-1','TC&MEDICAL'])]
-building3 = df1[df1['building'].isin(['TC3-TOWER A', 'TC3-TOWER B', 'TC3 HVAC'])]
 
+#create a Varible to store buildings data of ec03
+ec03_buildings = df1[df1['building'].isin(['TC3-TOWER A', 'TC3-TOWER B', 'TC3 HVAC'])]
+
+#total energy consumption of energy center- 2 
 def ec03_energy_consumption(self,from_ts, to_ts):
     color=["red","blue","lightgreen","#f0920e","#f71302","#f00e8e","#f0f00e","#0ef083","#0e83f0"]
     i=0
@@ -50,9 +60,11 @@ def ec03_energy_consumption(self,from_ts, to_ts):
     else:
         frame_layout = QVBoxLayout(self.ui.frame_10)
     frame_layout.addWidget(plot1)
+
+#Total energy consumption of each meter of ec02 in pie chart
 def ec03_meter_piechart(self,from_ts,to_ts):
     b=self.ui.ec03_building_cb.currentText()
-    b3 = building3[building3['building']==b]
+    b3 = ec03_buildings[ec03_buildings['building']==b]
     mask = (b3['Time column 1']>= from_ts) & (b3['Time column 1']<= to_ts)
     b3= b3.loc[mask]
     meter_counts = b3.groupby('meter').sum().reset_index()
@@ -68,9 +80,11 @@ def ec03_meter_piechart(self,from_ts,to_ts):
     else:
         frame_layout = QVBoxLayout(self.ui.frame_15)
     frame_layout.addWidget(plot1)
+
+#frequency Deviations
 def ec03_fre_deviations(self,from_ts,to_ts):
     meter=self.ui.ec03_meter_cb.currentText()
-    data = building3[building3['meter']==meter]
+    data = ec03_buildings[ec03_buildings['meter']==meter]
     mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
     count = len(data.loc[mask2 &(data['F']<49)])
     fig = px.bar(x=[count], y=[meter], title=f"Frequency Deviation Count")
@@ -85,9 +99,11 @@ def ec03_fre_deviations(self,from_ts,to_ts):
     else:
         frame_layout = QVBoxLayout(self.ui.frame_25)
     frame_layout.addWidget(plot1)
+
+#Power Factor Deviations
 def ec03_PF_deviations(self,from_ts,to_ts):
     meter=self.ui.ec03_meter_cb.currentText()
-    data = building2[building2['meter']==meter]
+    data = ec03_buildings[ec03_buildings['meter']==meter]
     mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
     count = len(data.loc[mask2 &(data['PF']<0.85)])
     fig = px.bar(x=[count], y=[meter], title=f"Power Factor Deviation Count")
@@ -102,9 +118,11 @@ def ec03_PF_deviations(self,from_ts,to_ts):
     else:
         frame_layout = QVBoxLayout(self.ui.frame_26)
     frame_layout.addWidget(plot1)   
+
+#voltage swell and sags
 def ec03_Vswell_Vsag(self,from_ts,to_ts):
     meter=self.ui.ec03_meter_cb.currentText()
-    data = building3[building3['meter']==meter]
+    data = ec03_buildings[ec03_buildings['meter']==meter]
     voltage = data[['rv','yv','bv','Time column 1']]
     voltage.set_index('Time column 1', inplace=True)
     voltage = voltage.resample('30S').ffill()

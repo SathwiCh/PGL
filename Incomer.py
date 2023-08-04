@@ -6,11 +6,14 @@ import plotly.express as px
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 import pandas as pd
 
+#df2--this variable refers to the combined dataset of Energy Center-2 & 3 (whole dataset)
 df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
 print("Loading...")
+#Converting the Time column to the pandas datetime object
 df2['Time column 1'] = df2['Time column 1'].astype(str)
 df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 
+#Total energy supply by the incomers
 def total_incomer_supply(self,from_ts, to_ts):
         color=["red","blue","lightgreen","#f0920e","#f71302","#f00e8e","#f0f00e","#0ef083","#0e83f0"]
         i=0
