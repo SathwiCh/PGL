@@ -1,11 +1,9 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton,QVBoxLayout,QFrame,QWidget
-from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
+from PyQt5.QtWidgets import QVBoxLayout
 import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-from PyQt5 import QtWidgets
 import pandas as pd
 
 df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
