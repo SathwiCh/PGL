@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1242</width>
-    <height>895</height>
+    <width>1240</width>
+    <height>888</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -184,7 +184,7 @@ QFrame#fram {
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_13">
@@ -425,7 +425,7 @@ QFrame#fram {
               <enum>QFrame::Raised</enum>
              </property>
              <property name="currentIndex">
-              <number>3</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="page_12">
               <layout class="QGridLayout" name="gridLayout_2">
@@ -505,8 +505,8 @@ QFrame#fram {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>-522</y>
-                    <width>950</width>
+                    <y>0</y>
+                    <width>974</width>
                     <height>1500</height>
                    </rect>
                   </property>
@@ -657,7 +657,7 @@ QFrame#fram {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>950</width>
+                    <width>974</width>
                     <height>2000</height>
                    </rect>
                   </property>
@@ -903,8 +903,8 @@ QFrame#fram {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>-1317</y>
-                    <width>976</width>
+                    <y>0</y>
+                    <width>974</width>
                     <height>2000</height>
                    </rect>
                   </property>
@@ -1164,7 +1164,7 @@ QFrame#fram {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>998</width>
+                <width>996</width>
                 <height>1500</height>
                </rect>
               </property>
@@ -2576,7 +2576,7 @@ background-color: rgb(203, 229, 253);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>81</width>
+                <width>996</width>
                 <height>2000</height>
                </rect>
               </property>
@@ -2603,8 +2603,8 @@ background-color: rgb(203, 229, 253);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>989</width>
-                <height>778</height>
+                <width>1013</width>
+                <height>771</height>
                </rect>
               </property>
               <property name="minimumSize">

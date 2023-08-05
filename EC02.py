@@ -28,10 +28,7 @@ df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H
 #Converting the Time column to the pandas datetime object
 ec02_buildings = df[df['building'].isin(['TC-1','TC&MEDICAL'])]
 class EC02Plotter:
-    def __init__(self, df2,df1,df, ui):
-        self.df2 = df2
-        self.df1=df1
-        self.df=df
+    def __init__(self, ui):
         self.ui=ui
 #total energy consumption of energy center- 2 
     def ec02_energy_consumption(self,from_ts, to_ts):

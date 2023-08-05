@@ -14,8 +14,7 @@ df2['Time column 1'] = df2['Time column 1'].astype(str)
 df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 
 class IncomerPlotter:
-    def __init__(self, df2, ui):
-        self.df2 = df2
+    def __init__(self, ui):
         self.ui=ui
 
     #Total energy supply by the incomers

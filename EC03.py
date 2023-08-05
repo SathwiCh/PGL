@@ -29,10 +29,7 @@ df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H
 ec03_buildings = df1[df1['building'].isin(['TC3-TOWER A', 'TC3-TOWER B', 'TC3 HVAC'])]
 
 class EC03Plotter:
-    def __init__(self, df2,df1,df, ui):
-        self.df2 = df2
-        self.df1=df1
-        self.df=df
+    def __init__(self, ui):
         self.ui=ui
     #total energy consumption of energy center- 2 
     def ec03_energy_consumption(self,from_ts, to_ts):

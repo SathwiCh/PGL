@@ -56,7 +56,11 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        
+
+        self.energy_plotter=EnergyPlotter(self.ui)
+        self.incomer_plotter=IncomerPlotter(self.ui)
+        self.ec02_plotter=EC02Plotter(self.ui)
+        self.ec03_plotter=EC03Plotter(self.ui)
         #Hide the icon widget when Intial display of Dashboard
         self.ui.icon_only_widget.hide()
         self.ui.stackedWidget.setCurrentIndex(0)
@@ -115,26 +119,26 @@ class MainWindow(QMainWindow):
         self.ui.BI_insights_cb.currentIndexChanged.connect(self.update_building_chords)
 
         #Default plotting of graphs for the Energy tab- Analytics tab
-        EnergyPlotter.total_energy_consumption(self,from_ts, to_ts)
-        EnergyPlotter.weekly_graph(self,from_ts, to_ts)
-        EnergyPlotter.centerwise_piechart(self,from_ts, to_ts)
+        self.energy_plotter.total_energy_consumption(from_ts, to_ts)
+        self.energy_plotter.weekly_graph(from_ts, to_ts)
+        self.energy_plotter.centerwise_piechart(from_ts, to_ts)
 
         #Default plotting of graphs for the Incomers tab- Analytics tab
-        IncomerPlotter.total_incomer_supply(self,from_ts, to_ts)
+        self.incomer_plotter.total_incomer_supply(from_ts, to_ts)
 
         #Default plotting of graphs for the EC02 tab- Analytics tab
-        EC02Plotter.ec02_energy_consumption(self,from_ts, to_ts)
-        EC02Plotter.ec02_meter_piechart(self,from_ts, to_ts)
-        EC02Plotter.ec02_fre_deviations(self,from_ts,to_ts)
-        EC02Plotter.ec02_PF_deviations(self,from_ts,to_ts)
-        EC02Plotter.ec02_Vswell_Vsag(self,from_ts,to_ts)
+        self.ec02_plotter.ec02_energy_consumption(from_ts, to_ts)
+        self.ec02_plotter.ec02_meter_piechart(from_ts, to_ts)
+        self.ec02_plotter.ec02_fre_deviations(from_ts,to_ts)
+        self.ec02_plotter.ec02_PF_deviations(from_ts,to_ts)
+        self.ec02_plotter.ec02_Vswell_Vsag(from_ts,to_ts)
         
         #Default plotting of graphs for the EC03 tab- Analytics tab
-        EC03Plotter.ec03_energy_consumption(self,from_ts, to_ts)
-        EC03Plotter.ec03_meter_piechart(self,from_ts,to_ts)
-        EC03Plotter.ec03_fre_deviations(self,from_ts,to_ts)
-        EC03Plotter.ec03_PF_deviations(self,from_ts,to_ts)
-        EC03Plotter.ec03_Vswell_Vsag(self,from_ts,to_ts)
+        self.ec03_plotter.ec03_energy_consumption(from_ts, to_ts)
+        self.ec03_plotter.ec03_meter_piechart(from_ts,to_ts)
+        self.ec03_plotter.ec03_fre_deviations(from_ts,to_ts)
+        self.ec03_plotter.ec03_PF_deviations(from_ts,to_ts)
+        self.ec03_plotter.ec03_Vswell_Vsag(from_ts,to_ts)
         print("Default plotting done")
 
         #Display the default Voltage Graphs based on the current text from the meter dropdown
@@ -310,23 +314,23 @@ class MainWindow(QMainWindow):
         from_ts = pd.Timestamp(from_date)
         to_ts = pd.Timestamp(to_date)
         #energy centers graphs
-        EnergyPlotter.total_energy_consumption(self,from_ts, to_ts)
-        EnergyPlotter.centerwise_piechart(self,from_ts, to_ts)
-        EnergyPlotter.weekly_graph(self,from_ts, to_ts)
+        self.energy_plotter.total_energy_consumption(from_ts, to_ts)
+        self.energy_plotter.centerwise_piechart(from_ts, to_ts)
+        self.energy_plotter.weekly_graph(from_ts, to_ts)
         #Incomers Graphs
-        IncomerPlotter.total_incomer_supply(self,from_ts, to_ts)
+        IncomerPlotter.total_incomer_supply(from_ts, to_ts)
         #EC02 graphs
-        EC02Plotter.ec02_energy_consumption(self,from_ts, to_ts)
-        EC02Plotter.ec02_meter_piechart(self,from_ts, to_ts)
-        EC02Plotter.ec02_fre_deviations(self,from_ts,to_ts)
-        EC02Plotter.ec02_PF_deviations(self,from_ts,to_ts)
-        EC02Plotter.ec02_Vswell_Vsag(self,from_ts,to_ts)
+        self.ec02_plotter.ec02_energy_consumption(from_ts, to_ts)
+        self.ec02_plotter.ec02_meter_piechart(from_ts, to_ts)
+        self.ec02_plotter.ec02_fre_deviations(from_ts,to_ts)
+        self.ec02_plotter.ec02_PF_deviations(from_ts,to_ts)
+        self.ec02_plotter.ec02_Vswell_Vsag(from_ts,to_ts)
         #EC03 graphs
-        EC03Plotter.ec03_energy_consumption(self,from_ts, to_ts)
-        EC03Plotter.ec03_meter_piechart(self,from_ts,to_ts)
-        EC03Plotter.ec03_fre_deviations(self,from_ts,to_ts)
-        EC03Plotter.ec03_PF_deviations(self,from_ts,to_ts)    
-        EC03Plotter.ec03_Vswell_Vsag(self,from_ts,to_ts)   
+        self.ec03_plotter.ec03_energy_consumption(from_ts, to_ts)
+        self.ec03_plotter.ec03_meter_piechart(from_ts,to_ts)
+        self.ec03_plotter.ec03_fre_deviations(from_ts,to_ts)
+        self.ec03_plotter.ec03_PF_deviations(from_ts,to_ts)    
+        self.ec03_plotter.ec03_Vswell_Vsag(from_ts,to_ts)   
     def change_voltage_graphs(self, selected_meter):
         from_date = self.ui.From_date.date().toPyDate()
         to_date = self.ui.To_date.date().toPyDate()

@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1242, 895)
+        MainWindow.resize(1240, 888)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("#centralwidget {\n"
 "        background-color: #FFFFFF;\n"
@@ -250,7 +250,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -522, 950, 1500))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 974, 1500))
         self.scrollAreaWidgetContents.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_10 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -343,7 +343,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollArea_5.setObjectName("scrollArea_5")
         self.scrollAreaWidgetContents_4 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 950, 2000))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 974, 2000))
         self.scrollAreaWidgetContents_4.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_4)
@@ -496,7 +496,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName("scrollArea_6")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, -1317, 976, 2000))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 974, 2000))
         self.scrollAreaWidgetContents_6.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_6)
@@ -653,7 +653,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 998, 1500))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 996, 1500))
         self.scrollAreaWidgetContents_3.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents_3.setMouseTracking(False)
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
@@ -1321,7 +1321,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 81, 2000))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 996, 2000))
         self.scrollAreaWidgetContents_2.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_2)
@@ -1335,7 +1335,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollArea_4.setObjectName("scrollArea_4")
         self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 989, 778))
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 1013, 771))
         self.scrollAreaWidgetContents_5.setMinimumSize(QtCore.QSize(0, 700))
         self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_5)
@@ -1562,8 +1562,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_3.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget_3.setCurrentIndex(0)
         self.change_btn.toggled['bool'].connect(self.icon_only_widget.setVisible) # type: ignore
         self.change_btn.toggled['bool'].connect(self.full_menu_widget.setHidden) # type: ignore
         self.home_btn_1.toggled['bool'].connect(self.home_btn_2.setChecked) # type: ignore
