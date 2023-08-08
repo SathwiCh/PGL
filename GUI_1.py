@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1240, 888)
+        MainWindow.resize(1238, 881)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("#centralwidget {\n"
 "        background-color: #FFFFFF;\n"
@@ -53,6 +53,90 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
+        self.icon_only_widget = QtWidgets.QWidget(self.centralwidget)
+        self.icon_only_widget.setStyleSheet("border-radius: 10px;")
+        self.icon_only_widget.setObjectName("icon_only_widget")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.icon_only_widget)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 5)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.logo_label_1 = QtWidgets.QLabel(self.icon_only_widget)
+        self.logo_label_1.setMinimumSize(QtCore.QSize(45, 45))
+        self.logo_label_1.setMaximumSize(QtCore.QSize(45, 45))
+        self.logo_label_1.setStyleSheet("")
+        self.logo_label_1.setText("")
+        self.logo_label_1.setPixmap(QtGui.QPixmap(":/icon/icon/Lnt_logo.png"))
+        self.logo_label_1.setScaledContents(True)
+        self.logo_label_1.setObjectName("logo_label_1")
+        self.horizontalLayout_3.addWidget(self.logo_label_1)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_3)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.home_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
+        self.home_btn_1.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon/icon/home-4-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icon/icon/home-4-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.home_btn_1.setIcon(icon)
+        self.home_btn_1.setIconSize(QtCore.QSize(25, 25))
+        self.home_btn_1.setCheckable(True)
+        self.home_btn_1.setAutoExclusive(True)
+        self.home_btn_1.setObjectName("home_btn_1")
+        self.verticalLayout.addWidget(self.home_btn_1)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
+        self.analytics_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
+        self.analytics_btn_1.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icon/icon/dashboard-5-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icon/icon/dashboard-5-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.analytics_btn_1.setIcon(icon1)
+        self.analytics_btn_1.setIconSize(QtCore.QSize(25, 25))
+        self.analytics_btn_1.setCheckable(True)
+        self.analytics_btn_1.setAutoExclusive(True)
+        self.analytics_btn_1.setObjectName("analytics_btn_1")
+        self.verticalLayout.addWidget(self.analytics_btn_1)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
+        self.insights_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
+        self.insights_btn_1.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/icon/icon/activity-feed-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/icon/icon/activity-feed-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.insights_btn_1.setIcon(icon2)
+        self.insights_btn_1.setIconSize(QtCore.QSize(25, 25))
+        self.insights_btn_1.setCheckable(True)
+        self.insights_btn_1.setAutoExclusive(True)
+        self.insights_btn_1.setObjectName("insights_btn_1")
+        self.verticalLayout.addWidget(self.insights_btn_1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem2)
+        self.prediction_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
+        self.prediction_btn_1.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icon/icon/product-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/icon/icon/product-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.prediction_btn_1.setIcon(icon3)
+        self.prediction_btn_1.setIconSize(QtCore.QSize(25, 25))
+        self.prediction_btn_1.setCheckable(True)
+        self.prediction_btn_1.setAutoExclusive(True)
+        self.prediction_btn_1.setObjectName("prediction_btn_1")
+        self.verticalLayout.addWidget(self.prediction_btn_1)
+        self.verticalLayout_3.addLayout(self.verticalLayout)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 375, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem3)
+        self.exit_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
+        self.exit_btn_1.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icon/icon/close-window-64.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.exit_btn_1.setIcon(icon4)
+        self.exit_btn_1.setIconSize(QtCore.QSize(25, 25))
+        self.exit_btn_1.setObjectName("exit_btn_1")
+        self.verticalLayout_3.addWidget(self.exit_btn_1)
+        self.gridLayout.addWidget(self.icon_only_widget, 0, 0, 1, 1)
         self.widget_3 = QtWidgets.QWidget(self.centralwidget)
         self.widget_3.setObjectName("widget_3")
         self.gridLayout_9 = QtWidgets.QGridLayout(self.widget_3)
@@ -69,9 +153,9 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.change_btn.setFont(font)
         self.change_btn.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icon/icon/menu-4-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.change_btn.setIcon(icon)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/icon/icon/menu-4-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.change_btn.setIcon(icon5)
         self.change_btn.setIconSize(QtCore.QSize(20, 20))
         self.change_btn.setCheckable(True)
         self.change_btn.setObjectName("change_btn")
@@ -85,10 +169,10 @@ class Ui_MainWindow(object):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.horizontalLayout.addWidget(self.label_8)
-        spacerItem = QtWidgets.QSpacerItem(236, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        spacerItem1 = QtWidgets.QSpacerItem(236, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
+        spacerItem4 = QtWidgets.QSpacerItem(236, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(236, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem5)
         self.label = QtWidgets.QLabel(self.widget)
         self.label.setMinimumSize(QtCore.QSize(180, 55))
         self.label.setMaximumSize(QtCore.QSize(300, 55))
@@ -97,6 +181,7 @@ class Ui_MainWindow(object):
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap(":/icon/icon/Logo1.png"))
         self.label.setScaledContents(True)
+        self.label.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
         self.gridLayout_9.addWidget(self.widget, 0, 0, 1, 1)
@@ -143,8 +228,8 @@ class Ui_MainWindow(object):
         self.icon_only_widget_2.setObjectName("icon_only_widget_2")
         self.horizontalLayout_36 = QtWidgets.QHBoxLayout(self.icon_only_widget_2)
         self.horizontalLayout_36.setObjectName("horizontalLayout_36")
-        spacerItem2 = QtWidgets.QSpacerItem(208, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_36.addItem(spacerItem2)
+        spacerItem6 = QtWidgets.QSpacerItem(208, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_36.addItem(spacerItem6)
         self.horizontalLayout_35 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_35.setSpacing(50)
         self.horizontalLayout_35.setObjectName("horizontalLayout_35")
@@ -190,8 +275,8 @@ class Ui_MainWindow(object):
         self.ec03_btn_3.setObjectName("ec03_btn_3")
         self.horizontalLayout_35.addWidget(self.ec03_btn_3)
         self.horizontalLayout_36.addLayout(self.horizontalLayout_35)
-        spacerItem3 = QtWidgets.QSpacerItem(114, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_36.addItem(spacerItem3)
+        spacerItem7 = QtWidgets.QSpacerItem(114, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_36.addItem(spacerItem7)
         self.gridLayout_13.addWidget(self.icon_only_widget_2, 1, 0, 1, 4)
         self.stackedWidget_3 = QtWidgets.QStackedWidget(self.page)
         self.stackedWidget_3.setFrameShape(QtWidgets.QFrame.WinPanel)
@@ -204,7 +289,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.Energy_kwh_frame = QtWidgets.QFrame(self.page_12)
-        self.Energy_kwh_frame.setStyleSheet("QFrame#fram {\n"
+        self.Energy_kwh_frame.setStyleSheet("QFrame#Energy_kwh_frame {\n"
 "    border-radius: 10px; /* Adjust the radius as per your requirement */\n"
 "    border: 2px solid #c0c0c0; /* Optional: You can set a border color */\n"
 "    background-color: #ffffff; /* Optional: You can set a background color #f0f0f0*/\n"
@@ -218,7 +303,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
         self.Energy_weekplot_frame = QtWidgets.QFrame(self.page_12)
-        self.Energy_weekplot_frame.setStyleSheet("QFrame#frame_2{\n"
+        self.Energy_weekplot_frame.setStyleSheet("QFrame#Energy_weekplot_frame{\n"
 "    border-radius: 10px; /* Adjust the radius as per your requirement */\n"
 "    border: 2px solid #c0c0c0; /* Optional: You can set a border color */\n"
 "    background-color: #ffffff; /* Optional: You can set a background color #f0f0f0*/\n"
@@ -229,7 +314,7 @@ class Ui_MainWindow(object):
         self.Energy_weekplot_frame.setObjectName("Energy_weekplot_frame")
         self.horizontalLayout_11.addWidget(self.Energy_weekplot_frame)
         self.Energy_pie_frame = QtWidgets.QFrame(self.page_12)
-        self.Energy_pie_frame.setStyleSheet("QFrame#frame_3 {\n"
+        self.Energy_pie_frame.setStyleSheet("QFrame#Energy_pie_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -250,7 +335,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 974, 1500))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -741, 972, 1500))
         self.scrollAreaWidgetContents.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_10 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
@@ -271,7 +356,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.incomer_cb, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_7.addLayout(self.horizontalLayout_7)
         self.incomer_kwh_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.incomer_kwh_frame.setStyleSheet("QFrame#frame_4 {\n"
+        self.incomer_kwh_frame.setStyleSheet("QFrame#incomer_kwh_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -284,7 +369,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.incomer_V_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.incomer_V_frame.setStyleSheet("QFrame#frame_5 {\n"
+        self.incomer_V_frame.setStyleSheet("QFrame#incomer_V_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -295,7 +380,7 @@ class Ui_MainWindow(object):
         self.incomer_V_frame.setObjectName("incomer_V_frame")
         self.horizontalLayout_12.addWidget(self.incomer_V_frame)
         self.incomer_I_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.incomer_I_frame.setStyleSheet("QFrame#frame_6 {\n"
+        self.incomer_I_frame.setStyleSheet("QFrame#incomer_I_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -309,7 +394,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.incomer_PF_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.incomer_PF_frame.setStyleSheet("QFrame#frame_7 {\n"
+        self.incomer_PF_frame.setStyleSheet("QFrame#incomer_PF_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -320,7 +405,7 @@ class Ui_MainWindow(object):
         self.incomer_PF_frame.setObjectName("incomer_PF_frame")
         self.horizontalLayout_13.addWidget(self.incomer_PF_frame)
         self.incomer_Freq_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.incomer_Freq_frame.setStyleSheet("QFrame#frame_8 {\n"
+        self.incomer_Freq_frame.setStyleSheet("QFrame#incomer_Freq_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -343,7 +428,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollArea_5.setObjectName("scrollArea_5")
         self.scrollAreaWidgetContents_4 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, 0, 974, 2000))
+        self.scrollAreaWidgetContents_4.setGeometry(QtCore.QRect(0, -1331, 972, 2000))
         self.scrollAreaWidgetContents_4.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_4.setObjectName("scrollAreaWidgetContents_4")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_4)
@@ -374,7 +459,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.addWidget(self.ec02_meter_cb, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_16.addLayout(self.horizontalLayout_18)
         self.ec02_kwh_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_kwh_frame.setStyleSheet("QFrame#frame_9 {\n"
+        self.ec02_kwh_frame.setStyleSheet("QFrame#ec02_kwh_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -387,7 +472,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_26.setObjectName("horizontalLayout_26")
         self.ec02_piechart_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_piechart_frame.setStyleSheet("QFrame#frame_11 {\n"
+        self.ec02_piechart_frame.setStyleSheet("QFrame#ec02_piechart_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -398,7 +483,7 @@ class Ui_MainWindow(object):
         self.ec02_piechart_frame.setObjectName("ec02_piechart_frame")
         self.horizontalLayout_26.addWidget(self.ec02_piechart_frame)
         self.ec02_V_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_V_frame.setStyleSheet("QFrame#frame_12 {\n"
+        self.ec02_V_frame.setStyleSheet("QFrame#ec02_V_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -412,7 +497,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_27.setObjectName("horizontalLayout_27")
         self.ec02_I_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_I_frame.setStyleSheet("QFrame#frame_13 {\n"
+        self.ec02_I_frame.setStyleSheet("QFrame#ec02_I_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -423,7 +508,7 @@ class Ui_MainWindow(object):
         self.ec02_I_frame.setObjectName("ec02_I_frame")
         self.horizontalLayout_27.addWidget(self.ec02_I_frame)
         self.ec02_PF_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_PF_frame.setStyleSheet("QFrame#frame_14 {\n"
+        self.ec02_PF_frame.setStyleSheet("QFrame#ec02_PF_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -437,7 +522,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
         self.ec02_Freq_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_Freq_frame.setStyleSheet("QFrame#frame_19 {\n"
+        self.ec02_Freq_frame.setStyleSheet("QFrame#ec02_Freq_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -448,7 +533,7 @@ class Ui_MainWindow(object):
         self.ec02_Freq_frame.setObjectName("ec02_Freq_frame")
         self.horizontalLayout_31.addWidget(self.ec02_Freq_frame)
         self.ec02_Vswellsag_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_Vswellsag_frame.setStyleSheet("QFrame#frame_20 {\n"
+        self.ec02_Vswellsag_frame.setStyleSheet("QFrame#ec02_Vswellsag_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -462,7 +547,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_32 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_32.setObjectName("horizontalLayout_32")
         self.ec02_Fdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_Fdev_frame.setStyleSheet("QFrame#frame_21 {\n"
+        self.ec02_Fdev_frame.setStyleSheet("QFrame#ec02_Fdev_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -473,7 +558,7 @@ class Ui_MainWindow(object):
         self.ec02_Fdev_frame.setObjectName("ec02_Fdev_frame")
         self.horizontalLayout_32.addWidget(self.ec02_Fdev_frame)
         self.ec02_PFdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_4)
-        self.ec02_PFdev_frame.setStyleSheet("QFrame#frame_22 {\n"
+        self.ec02_PFdev_frame.setStyleSheet("QFrame#ec02_PFdev_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -496,7 +581,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollArea_6.setObjectName("scrollArea_6")
         self.scrollAreaWidgetContents_6 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, 0, 974, 2000))
+        self.scrollAreaWidgetContents_6.setGeometry(QtCore.QRect(0, -1233, 972, 2000))
         self.scrollAreaWidgetContents_6.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_6.setObjectName("scrollAreaWidgetContents_6")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_6)
@@ -527,7 +612,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.addWidget(self.ec03_meter_cb, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_17.addLayout(self.horizontalLayout_28)
         self.ec03_kwh_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_kwh_frame.setStyleSheet("QFrame#frame_10 {\n"
+        self.ec03_kwh_frame.setStyleSheet("QFrame#ec03_kwh_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -540,7 +625,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
         self.ec03_piechart_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_piechart_frame.setStyleSheet("QFrame#frame_15 {\n"
+        self.ec03_piechart_frame.setStyleSheet("QFrame#ec03_piechart_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -551,7 +636,7 @@ class Ui_MainWindow(object):
         self.ec03_piechart_frame.setObjectName("ec03_piechart_frame")
         self.horizontalLayout_29.addWidget(self.ec03_piechart_frame)
         self.ec03_V_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_V_frame.setStyleSheet("QFrame#frame_16 {\n"
+        self.ec03_V_frame.setStyleSheet("QFrame#ec03_V_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -565,7 +650,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_30.setObjectName("horizontalLayout_30")
         self.ec03_I_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_I_frame.setStyleSheet("QFrame#frame_17 {\n"
+        self.ec03_I_frame.setStyleSheet("QFrame#ec03_I_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -576,7 +661,7 @@ class Ui_MainWindow(object):
         self.ec03_I_frame.setObjectName("ec03_I_frame")
         self.horizontalLayout_30.addWidget(self.ec03_I_frame)
         self.ec03_PF_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_PF_frame.setStyleSheet("QFrame#frame_18 {\n"
+        self.ec03_PF_frame.setStyleSheet("QFrame#ec03_PF_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -590,7 +675,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.ec03_Freq_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_Freq_frame.setStyleSheet("QFrame#frame_23 {\n"
+        self.ec03_Freq_frame.setStyleSheet("QFrame#ec03_Freq_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -601,7 +686,7 @@ class Ui_MainWindow(object):
         self.ec03_Freq_frame.setObjectName("ec03_Freq_frame")
         self.horizontalLayout_33.addWidget(self.ec03_Freq_frame)
         self.ec03_Vswellsag_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_Vswellsag_frame.setStyleSheet("QFrame#frame_24 {\n"
+        self.ec03_Vswellsag_frame.setStyleSheet("QFrame#ec03_Vswellsag_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -615,7 +700,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_34 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_34.setObjectName("horizontalLayout_34")
         self.ec03_Fdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_Fdev_frame.setStyleSheet("QFrame#frame_25 {\n"
+        self.ec03_Fdev_frame.setStyleSheet("QFrame#ec03_Fdev_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -626,7 +711,7 @@ class Ui_MainWindow(object):
         self.ec03_Fdev_frame.setObjectName("ec03_Fdev_frame")
         self.horizontalLayout_34.addWidget(self.ec03_Fdev_frame)
         self.ec03_PFdev_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
-        self.ec03_PFdev_frame.setStyleSheet("QFrame#frame_26 {\n"
+        self.ec03_PFdev_frame.setStyleSheet("QFrame#ec03_PFdev_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
@@ -653,7 +738,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 996, 1500))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 994, 1500))
         self.scrollAreaWidgetContents_3.setMinimumSize(QtCore.QSize(0, 1500))
         self.scrollAreaWidgetContents_3.setMouseTracking(False)
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
@@ -1321,7 +1406,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 996, 2000))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 994, 2000))
         self.scrollAreaWidgetContents_2.setMinimumSize(QtCore.QSize(0, 2000))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_2)
@@ -1335,51 +1420,80 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollArea_4.setObjectName("scrollArea_4")
         self.scrollAreaWidgetContents_5 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 1013, 771))
+        self.scrollAreaWidgetContents_5.setGeometry(QtCore.QRect(0, 0, 1011, 764))
         self.scrollAreaWidgetContents_5.setMinimumSize(QtCore.QSize(0, 700))
         self.scrollAreaWidgetContents_5.setObjectName("scrollAreaWidgetContents_5")
-        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_5)
-        self.verticalLayout_12.setObjectName("verticalLayout_12")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
-        self.frame.setStyleSheet("QFrame#frame {\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #c0c0c0;\n"
-"    background-color: #ffffff; \n"
-"    border-style: outset;\n"
-"}")
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.verticalLayout_8.addWidget(self.frame)
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_5)
+        self.gridLayout_14.setObjectName("gridLayout_14")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.frame_28 = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
-        self.frame_28.setStyleSheet("QFrame#frame_28 {\n"
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.Home_Building_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
+        self.Home_Building_frame.setStyleSheet("QFrame#Home_Building_frame {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_28.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_28.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_28.setObjectName("frame_28")
-        self.horizontalLayout_2.addWidget(self.frame_28)
-        self.frame_27 = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
-        self.frame_27.setStyleSheet("QFrame#frame_27\n"
+        self.Home_Building_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.Home_Building_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Home_Building_frame.setObjectName("Home_Building_frame")
+        self.horizontalLayout_8.addWidget(self.Home_Building_frame)
+        self.Home_Pie_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
+        self.Home_Pie_frame.setStyleSheet("QFrame#Home_Pie_frame\n"
 " {\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #c0c0c0;\n"
 "    background-color: #ffffff; \n"
 "    border-style: outset;\n"
 "}")
-        self.frame_27.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_27.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_27.setObjectName("frame_27")
-        self.horizontalLayout_2.addWidget(self.frame_27)
-        self.verticalLayout_8.addLayout(self.horizontalLayout_2)
-        self.verticalLayout_12.addLayout(self.verticalLayout_8)
+        self.Home_Pie_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.Home_Pie_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Home_Pie_frame.setObjectName("Home_Pie_frame")
+        self.horizontalLayout_8.addWidget(self.Home_Pie_frame)
+        self.horizontalLayout_2.addLayout(self.horizontalLayout_8)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setSpacing(9)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.Home_pf_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_5)
+        self.Home_pf_lb.setMinimumSize(QtCore.QSize(50, 50))
+        self.Home_pf_lb.setMaximumSize(QtCore.QSize(350, 350))
+        self.Home_pf_lb.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"border-radius:10px")
+        self.Home_pf_lb.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.Home_pf_lb.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Home_pf_lb.setAlignment(QtCore.Qt.AlignCenter)
+        self.Home_pf_lb.setObjectName("Home_pf_lb")
+        self.verticalLayout_8.addWidget(self.Home_pf_lb)
+        self.Home_freq_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_5)
+        self.Home_freq_lb.setMinimumSize(QtCore.QSize(50, 50))
+        self.Home_freq_lb.setMaximumSize(QtCore.QSize(350, 350))
+        self.Home_freq_lb.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"border-radius:10px")
+        self.Home_freq_lb.setFrameShape(QtWidgets.QFrame.WinPanel)
+        self.Home_freq_lb.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Home_freq_lb.setAlignment(QtCore.Qt.AlignCenter)
+        self.Home_freq_lb.setObjectName("Home_freq_lb")
+        self.verticalLayout_8.addWidget(self.Home_freq_lb)
+        self.horizontalLayout_2.addLayout(self.verticalLayout_8)
+        self.gridLayout_14.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
+        self.Home_meter_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_5)
+        self.Home_meter_frame.setEnabled(True)
+        self.Home_meter_frame.setMinimumSize(QtCore.QSize(900, 200))
+        self.Home_meter_frame.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.Home_meter_frame.setStyleSheet("QFrame#Home_meter_frame {\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid #c0c0c0;\n"
+"    background-color: #ffffff; \n"
+"    border-style: outset;\n"
+"}")
+        self.Home_meter_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.Home_meter_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Home_meter_frame.setObjectName("Home_meter_frame")
+        self.gridLayout_14.addWidget(self.Home_meter_frame, 1, 0, 1, 1)
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_5)
         self.gridLayout_5.addWidget(self.scrollArea_4, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_4)
@@ -1416,17 +1530,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.home_btn_2.setFont(font)
         self.home_btn_2.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icon/icon/home-4-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/icon/icon/home-4-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.home_btn_2.setIcon(icon1)
+        self.home_btn_2.setIcon(icon)
         self.home_btn_2.setIconSize(QtCore.QSize(25, 25))
         self.home_btn_2.setCheckable(True)
         self.home_btn_2.setAutoExclusive(True)
         self.home_btn_2.setObjectName("home_btn_2")
         self.verticalLayout_2.addWidget(self.home_btn_2)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem4)
+        spacerItem8 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem8)
         self.analytics_btn_2 = QtWidgets.QPushButton(self.full_menu_widget)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -1436,17 +1547,14 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.analytics_btn_2.setFont(font)
         self.analytics_btn_2.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icon/icon/dashboard-5-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon2.addPixmap(QtGui.QPixmap(":/icon/icon/dashboard-5-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.analytics_btn_2.setIcon(icon2)
+        self.analytics_btn_2.setIcon(icon1)
         self.analytics_btn_2.setIconSize(QtCore.QSize(25, 25))
         self.analytics_btn_2.setCheckable(True)
         self.analytics_btn_2.setAutoExclusive(True)
         self.analytics_btn_2.setObjectName("analytics_btn_2")
         self.verticalLayout_2.addWidget(self.analytics_btn_2)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem5)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem9)
         self.insights_btn_2 = QtWidgets.QPushButton(self.full_menu_widget)
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
@@ -1456,114 +1564,36 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.insights_btn_2.setFont(font)
         self.insights_btn_2.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icon/icon/activity-feed-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon3.addPixmap(QtGui.QPixmap(":/icon/icon/activity-feed-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.insights_btn_2.setIcon(icon3)
+        self.insights_btn_2.setIcon(icon2)
         self.insights_btn_2.setIconSize(QtCore.QSize(25, 25))
         self.insights_btn_2.setCheckable(True)
         self.insights_btn_2.setAutoExclusive(True)
         self.insights_btn_2.setObjectName("insights_btn_2")
         self.verticalLayout_2.addWidget(self.insights_btn_2)
-        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem6)
+        spacerItem10 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem10)
         self.prediction_btn_2 = QtWidgets.QPushButton(self.full_menu_widget)
         self.prediction_btn_2.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/icon/icon/product-32.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon4.addPixmap(QtGui.QPixmap(":/icon/icon/product-48.ico"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.prediction_btn_2.setIcon(icon4)
+        self.prediction_btn_2.setIcon(icon3)
         self.prediction_btn_2.setIconSize(QtCore.QSize(25, 25))
         self.prediction_btn_2.setCheckable(True)
         self.prediction_btn_2.setAutoExclusive(True)
         self.prediction_btn_2.setObjectName("prediction_btn_2")
         self.verticalLayout_2.addWidget(self.prediction_btn_2)
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
-        spacerItem7 = QtWidgets.QSpacerItem(20, 373, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_4.addItem(spacerItem7)
+        spacerItem11 = QtWidgets.QSpacerItem(20, 373, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_4.addItem(spacerItem11)
         self.exit_btn_2 = QtWidgets.QPushButton(self.full_menu_widget)
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/icon/icon/close-window-64.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.exit_btn_2.setIcon(icon5)
+        self.exit_btn_2.setIcon(icon4)
         self.exit_btn_2.setIconSize(QtCore.QSize(25, 25))
         self.exit_btn_2.setObjectName("exit_btn_2")
         self.verticalLayout_4.addWidget(self.exit_btn_2)
         self.gridLayout.addWidget(self.full_menu_widget, 0, 1, 1, 1)
-        self.icon_only_widget = QtWidgets.QWidget(self.centralwidget)
-        self.icon_only_widget.setStyleSheet("border-radius: 10px;")
-        self.icon_only_widget.setObjectName("icon_only_widget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.icon_only_widget)
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 5)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.logo_label_1 = QtWidgets.QLabel(self.icon_only_widget)
-        self.logo_label_1.setMinimumSize(QtCore.QSize(45, 45))
-        self.logo_label_1.setMaximumSize(QtCore.QSize(45, 45))
-        self.logo_label_1.setStyleSheet("")
-        self.logo_label_1.setText("")
-        self.logo_label_1.setPixmap(QtGui.QPixmap(":/icon/icon/Lnt_logo.png"))
-        self.logo_label_1.setScaledContents(True)
-        self.logo_label_1.setObjectName("logo_label_1")
-        self.horizontalLayout_3.addWidget(self.logo_label_1)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_3)
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.home_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
-        self.home_btn_1.setText("")
-        self.home_btn_1.setIcon(icon1)
-        self.home_btn_1.setIconSize(QtCore.QSize(25, 25))
-        self.home_btn_1.setCheckable(True)
-        self.home_btn_1.setAutoExclusive(True)
-        self.home_btn_1.setObjectName("home_btn_1")
-        self.verticalLayout.addWidget(self.home_btn_1)
-        spacerItem8 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem8)
-        self.analytics_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
-        self.analytics_btn_1.setText("")
-        self.analytics_btn_1.setIcon(icon2)
-        self.analytics_btn_1.setIconSize(QtCore.QSize(25, 25))
-        self.analytics_btn_1.setCheckable(True)
-        self.analytics_btn_1.setAutoExclusive(True)
-        self.analytics_btn_1.setObjectName("analytics_btn_1")
-        self.verticalLayout.addWidget(self.analytics_btn_1)
-        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem9)
-        self.insights_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
-        self.insights_btn_1.setText("")
-        self.insights_btn_1.setIcon(icon3)
-        self.insights_btn_1.setIconSize(QtCore.QSize(25, 25))
-        self.insights_btn_1.setCheckable(True)
-        self.insights_btn_1.setAutoExclusive(True)
-        self.insights_btn_1.setObjectName("insights_btn_1")
-        self.verticalLayout.addWidget(self.insights_btn_1)
-        spacerItem10 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem10)
-        self.prediction_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
-        self.prediction_btn_1.setText("")
-        self.prediction_btn_1.setIcon(icon4)
-        self.prediction_btn_1.setIconSize(QtCore.QSize(25, 25))
-        self.prediction_btn_1.setCheckable(True)
-        self.prediction_btn_1.setAutoExclusive(True)
-        self.prediction_btn_1.setObjectName("prediction_btn_1")
-        self.verticalLayout.addWidget(self.prediction_btn_1)
-        self.verticalLayout_3.addLayout(self.verticalLayout)
-        spacerItem11 = QtWidgets.QSpacerItem(20, 375, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem11)
-        self.exit_btn_1 = QtWidgets.QPushButton(self.icon_only_widget)
-        self.exit_btn_1.setText("")
-        self.exit_btn_1.setIcon(icon5)
-        self.exit_btn_1.setIconSize(QtCore.QSize(25, 25))
-        self.exit_btn_1.setObjectName("exit_btn_1")
-        self.verticalLayout_3.addWidget(self.exit_btn_1)
-        self.gridLayout.addWidget(self.icon_only_widget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_3.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget_3.setCurrentIndex(3)
         self.change_btn.toggled['bool'].connect(self.icon_only_widget.setVisible) # type: ignore
         self.change_btn.toggled['bool'].connect(self.full_menu_widget.setHidden) # type: ignore
         self.home_btn_1.toggled['bool'].connect(self.home_btn_2.setChecked) # type: ignore
@@ -1626,6 +1656,8 @@ class Ui_MainWindow(object):
         self.label_80.setText(_translate("MainWindow", "Voltage_Sag"))
         self.label_22.setText(_translate("MainWindow", "BUILDING"))
         self.label_38.setText(_translate("MainWindow", "Select Center:"))
+        self.Home_pf_lb.setText(_translate("MainWindow", "TextLabel"))
+        self.Home_freq_lb.setText(_translate("MainWindow", "TextLabel"))
         self.home_btn_2.setText(_translate("MainWindow", "Home"))
         self.analytics_btn_2.setText(_translate("MainWindow", "Analytics"))
         self.insights_btn_2.setText(_translate("MainWindow", "Insights"))

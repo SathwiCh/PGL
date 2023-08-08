@@ -8,25 +8,16 @@ import pandas as pd
 
 #Read the Dataframes from the local
 #df--this variable refers to the dataset of Energy Center-2 (EC02)
-df=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
-
-#df1--this variable refers to the dataset of Energy Center-3 (EC03)
-df1=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec03.csv')
-
-#df2--this variable refers to the combined dataset of Energy Center-2 & 3 (whole dataset)
-df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
+df_ec02=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
 print("Loading...")
 
 #Converting the Time column to the pandas datetime object
-df['Time column 1'] = df['Time column 1'].astype(str)
-df['Time column 1'] = pd.to_datetime(df['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-df1['Time column 1'] = df1['Time column 1'].astype(str)
-df1['Time column 1'] = pd.to_datetime(df1['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-df2['Time column 1'] = df2['Time column 1'].astype(str)
-df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec02['Time column 1'] = df_ec02['Time column 1'].astype(str)
+df_ec02['Time column 1'] = pd.to_datetime(df_ec02['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 
 #Converting the Time column to the pandas datetime object
-ec02_buildings = df[df['building'].isin(['TC-1','TC&MEDICAL'])]
+ec02_buildings = df_ec02[df_ec02['building'].isin(['TC-1','TC&MEDICAL'])]
+
 class EC02Plotter:
     def __init__(self, ui):
         self.ui=ui
@@ -34,7 +25,7 @@ class EC02Plotter:
     def ec02_energy_consumption(self,from_ts, to_ts):
         data=[]
         title="EC02 For each Building"
-        grouped = df.groupby(['building','Time column 1']).sum()
+        grouped = df_ec02.groupby(['building','Time column 1']).sum()
         grouped['cum'] = grouped['actual_kwh'].cumsum(axis = 0)
         grouped = grouped.reset_index()
         mask2 = (grouped['Time column 1']>= from_ts) & (grouped['Time column 1']<= to_ts)

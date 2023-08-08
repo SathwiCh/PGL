@@ -8,30 +8,30 @@ import pandas as pd
 
 #Read the Dataframes from the local
 #df--this variable refers to the dataset of Energy Center-2 (EC02)
-df=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
+df_ec02=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
 
 #df1--this variable refers to the dataset of Energy Center-3 (EC03)
-df1=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec03.csv')
+df_ec03=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec03.csv')
 
 #df2--this variable refers to the combined dataset of Energy Center-2 & 3 (whole dataset)
-df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
+df_ec02_ec03=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
 print("Loading...")
 
 #Converting the Time column to the pandas datetime object
-df['Time column 1'] = df['Time column 1'].astype(str)
-df['Time column 1'] = pd.to_datetime(df['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-df1['Time column 1'] = df1['Time column 1'].astype(str)
-df1['Time column 1'] = pd.to_datetime(df1['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-df2['Time column 1'] = df2['Time column 1'].astype(str)
-df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec02['Time column 1'] = df_ec02['Time column 1'].astype(str)
+df_ec02['Time column 1'] = pd.to_datetime(df_ec02['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec03['Time column 1'] = df_ec03['Time column 1'].astype(str)
+df_ec03['Time column 1'] = pd.to_datetime(df_ec03['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec02_ec03['Time column 1'] = df_ec02_ec03['Time column 1'].astype(str)
+df_ec02_ec03['Time column 1'] = pd.to_datetime(df_ec02_ec03['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 class EnergyPlotter:
     def __init__(self, ui):
         self.ui=ui
     #Finding the total energy consumtion of center wise
     def total_energy_consumption(self,from_ts, to_ts):
-        gdf = df[['Time column 1','actual_kwh']]
+        gdf = df_ec02[['Time column 1','actual_kwh']]
         grouped_df = gdf.groupby('Time column 1').sum()
-        gdf1 = df1[['Time column 1','actual_kwh']]
+        gdf1 = df_ec03[['Time column 1','actual_kwh']]
         grouped_df1 = gdf1.groupby('Time column 1').sum()
         grouped_df = grouped_df.reset_index()
         grouped_df1 = grouped_df1.reset_index()
@@ -54,11 +54,10 @@ class EnergyPlotter:
         else:
             frame_layout = QVBoxLayout(self.ui.Energy_kwh_frame)
         frame_layout.addWidget(plot1) 
-        print("no prblm")
 
     #Displaying the consumption of centers in pie chart
     def centerwise_piechart(self,from_ts, to_ts):
-        m1 = df2.groupby(['center','Time column 1']).sum()
+        m1 = df_ec02_ec03.groupby(['center','Time column 1']).sum()
         m1 = m1.reset_index()
         mask = (m1['Time column 1']>= from_ts) & (m1['Time column 1']<= to_ts)
         m1=m1.loc[mask]
@@ -77,8 +76,8 @@ class EnergyPlotter:
 
     #weekly total energy consumption 
     def weekly_graph(self,from_ts, to_ts):
-        mask = (df2['Time column 1']>= to_ts-pd.Timedelta('7 days')) & (df2['Time column 1']<= to_ts)
-        m=df2.loc[mask]
+        mask = (df_ec02_ec03['Time column 1']>= to_ts-pd.Timedelta('7 days')) & (df_ec02_ec03['Time column 1']<= to_ts)
+        m=df_ec02_ec03.loc[mask]
         m1 = m.pivot_table(index='days_of_week', columns=['time_of_day'], values=['kwh'], aggfunc='count')
         m1 = m1.melt(ignore_index=False)
         m1.reset_index(inplace=True)

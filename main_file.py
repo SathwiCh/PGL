@@ -7,49 +7,46 @@ import plotly.express as px
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5 import QtWidgets
 import pandas as pd
+import warnings
+warnings.filterwarnings("ignore")
 
 # import the generated UI code
 from GUI_1 import Ui_MainWindow
 
-#import the functions from each python file
-# from Energy import total_energy_consumption,centerwise_piechart,weekly_graph
+#import the classes from python files
+from Home_Tab import HomePlotter
 from Energy import EnergyPlotter
-# from Incomer import total_incomer_supply
 from Incomer import IncomerPlotter
-# from EC02 import ec02_energy_consumption,ec02_meter_piechart,ec02_fre_deviations,ec02_PF_deviations,ec02_Vswell_Vsag
 from EC02 import EC02Plotter
-# from EC03 import ec03_energy_consumption,ec03_meter_piechart,ec03_fre_deviations,ec03_PF_deviations,ec03_Vswell_Vsag
 from EC03 import EC03Plotter
 
 #Read the Dataframes from the local
-#df--this variable refers to the dataset of Energy Center-2 (EC02)
-df=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec02.csv')
-
-#df1--this variable refers to the dataset of Energy Center-3 (EC03)
-df1=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\new_ec03.csv')
-
-#df2--this variable refers to the combined dataset of Energy Center-2 & 3 (whole dataset)
-df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
+df_ec02=pd.read_csv('C:\\Users\\20339181\\OneDrive - L&T Construction\\Desktop\\Dashboards-Analytics\\PyQt5-Dashboard-Main\\Dashboard Template\\new_ec02.csv')
+df_ec03=pd.read_csv('C:\\Users\\20339181\\OneDrive - L&T Construction\\Desktop\\Dashboards-Analytics\\PyQt5-Dashboard-Main\\Dashboard Template\\new_ec03.csv')
+df_ec02_ec03=pd.read_csv('C:\\Users\\20339181\\OneDrive - L&T Construction\\Desktop\\Dashboards-Analytics\\PyQt5-Dashboard-Main\\Dashboard Template\\ec02_ec03.csv')
 print("datasets Loaded")
 
 #Converting the Time column to the pandas datetime object
-df['Time column 1'] = df['Time column 1'].astype(str)
-df['Time column 1'] = pd.to_datetime(df['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-df1['Time column 1'] = df1['Time column 1'].astype(str)
-df1['Time column 1'] = pd.to_datetime(df1['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-df2['Time column 1'] = df2['Time column 1'].astype(str)
-df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
-print("timestamp changed")
+df_ec02['Time column 1'] = df_ec02['Time column 1'].astype(str)
+df_ec02['Time column 1'] = pd.to_datetime(df_ec02['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec03['Time column 1'] = df_ec03['Time column 1'].astype(str)
+df_ec03['Time column 1'] = pd.to_datetime(df_ec03['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec02_ec03['Time column 1'] = df_ec02_ec03['Time column 1'].astype(str)
+df_ec02_ec03['Time column 1'] = pd.to_datetime(df_ec02_ec03['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+print("Timestamp changed")
 
 #create a Varible to store buildings data of ec02 
-ec02_buildings = df[df['building'].isin(['TC-1','TC&MEDICAL'])]
+ec02_buildings = df_ec02[df_ec02['building'].isin(['TC-1','TC&MEDICAL'])]
 #create a Varible to store buildings data of ec03
-ec03_buildings = df1[df1['building'].isin(['TC3-TOWER A', 'TC3-TOWER B', 'TC3 HVAC'])]
-#df3--Create a variable to store all the building data
-df3 = df2[(df2["building"] == 'TC-1') | (df2["building"] == 'TC&MEDICAL') | (df2["building"] == 'TC3-TOWER A') | (df2["building"] == 'TC3-TOWER B') | (df2["building"] == 'TC3 HVAC')]
-#df4--Create a variable to store all the meters data
-df4=df2[(df2["meter"] == '11kv_415Vtrafo') | (df2["meter"] == '33kV trafo-1') | (df2["meter"] == '33kV trafo-2') | (df2["meter"] == '33kV trafo-3') |
-        (df2["meter"] == '33kV trafo-4') | (df2["meter"] == '33kV trafo-5') | (df2["meter"] == 'EC02 MFM 11KV TRAFO') | (df2["meter"] == '33KV Incomer')]
+ec03_buildings = df_ec03[df_ec03['building'].isin(['TC3-TOWER A', 'TC3-TOWER B', 'TC3 HVAC'])]
+#Create a variable to store all the building data
+df_all_buildings = df_ec02_ec03[(df_ec02_ec03["building"] == 'TC-1') | (df_ec02_ec03["building"] == 'TC&MEDICAL') | (df_ec02_ec03["building"] == 'TC3-TOWER A') | (df_ec02_ec03["building"] == 'TC3-TOWER B') | (df_ec02_ec03["building"] == 'TC3 HVAC')]
+#Create a variable to store all the meters data
+df_meters=df_ec02_ec03[(df_ec02_ec03["meter"] == '11kv_415Vtrafo') | (df_ec02_ec03["meter"] == '33kV trafo-1') | (df_ec02_ec03["meter"] == '33kV trafo-2') | (df_ec02_ec03["meter"] == '33kV trafo-3') |
+        (df_ec02_ec03["meter"] == '33kV trafo-4') | (df_ec02_ec03["meter"] == '33kV trafo-5') | (df_ec02_ec03["meter"] == 'EC02 MFM 11KV TRAFO') | (df_ec02_ec03["meter"] == '33KV Incomer')]
+
+last_date = pd.to_datetime('2022-09-28')
+home_df = df_all_buildings[df_all_buildings['Time column 1'].dt.date == last_date.date()]
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -57,13 +54,16 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        #create an instances for the classes
+        self.home_plotter=HomePlotter(self.ui)
         self.energy_plotter=EnergyPlotter(self.ui)
         self.incomer_plotter=IncomerPlotter(self.ui)
         self.ec02_plotter=EC02Plotter(self.ui)
         self.ec03_plotter=EC03Plotter(self.ui)
+
         #Hide the icon widget when Intial display of Dashboard
         self.ui.icon_only_widget.hide()
-        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.stackedWidget_3.setCurrentIndex(0)
         #Display the home tab when initial display of Dashboard
         self.ui.home_btn_2.setChecked(True)
@@ -103,20 +103,24 @@ class MainWindow(QMainWindow):
         self.ui.ec03_building_cb.currentIndexChanged.connect(self.update_ec03_meter_combobox)
 
         #Add Incomer meters list to the meters dropdown in the Incomer tab- Analytics tab
-        Incomer_names = df4["meter"].unique()
+        Incomer_names = df_meters["meter"].unique()
         self.ui.incomer_cb.addItems(Incomer_names)
         
         #Add Incomer meters list to the meters dropdown - Insights tab 
-        Incomer_names = df4["meter"].unique()
+        Incomer_names = df_meters["meter"].unique()
         self.ui.In_insights_cb.addItems(Incomer_names)
         #Call the update_incomer_chords function when the dropdown value changed
         self.ui.In_insights_cb.currentIndexChanged.connect(self.update_incomer_chords)
 
         #Add centers list to the dropdown- Insights tab 
-        center_names = df3["center"].unique()
+        center_names = df_all_buildings["center"].unique()
         self.ui.BI_insights_cb.addItems(center_names)
         #Call the update_building_chords function when the dropdown value changed
         self.ui.BI_insights_cb.currentIndexChanged.connect(self.update_building_chords)
+
+        self.home_plotter.home_piechart()
+        self.home_plotter.home_meterchart()
+        self.home_plotter.home_buildingchart()
 
         #Default plotting of graphs for the Energy tab- Analytics tab
         self.energy_plotter.total_energy_consumption(from_ts, to_ts)
@@ -139,47 +143,12 @@ class MainWindow(QMainWindow):
         self.ec03_plotter.ec03_fre_deviations(from_ts,to_ts)
         self.ec03_plotter.ec03_PF_deviations(from_ts,to_ts)
         self.ec03_plotter.ec03_Vswell_Vsag(from_ts,to_ts)
-        print("Default plotting done")
 
-        #Display the default Voltage Graphs based on the current text from the meter dropdown
-        self.change_voltage_graphs(self.ui.incomer_cb.currentText())
-        self.change_voltage_graphs(self.ui.ec02_meter_cb.currentText())
-        self.change_voltage_graphs(self.ui.ec03_meter_cb.currentText())
-        
-        #Display the default current Graphs based on the current text from the meter dropdown
-        self.change_current_graphs(self.ui.incomer_cb.currentText())
-        self.change_current_graphs(self.ui.ec02_meter_cb.currentText())
-        self.change_current_graphs(self.ui.ec03_meter_cb.currentText())
-        
-        #Display the default power factor Graphs based on the current text from the meter dropdown
-        self.change_pf_graphs(self.ui.incomer_cb.currentText())
-        self.change_pf_graphs(self.ui.ec02_meter_cb.currentText())
-        self.change_pf_graphs(self.ui.ec03_meter_cb.currentText())
-        
-        #Display the default frequency Graphs based on the current text from the meter dropdown
-        self.change_fre_graphs(self.ui.incomer_cb.currentText())
-        self.change_fre_graphs(self.ui.ec02_meter_cb.currentText())
-        self.change_fre_graphs(self.ui.ec03_meter_cb.currentText())
-
-        #Call the Change_voltage_graphs Function when the meter name is changed from the drop down
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_voltage_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
-
-        #Call the Change_current_graphs Function when the meter name is changed from the drop down
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_current_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_current_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_current_graphs)
-
-        #Call the Change_pf_graphs Function when the meter name is changed from the drop down
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_pf_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
-
-        #Call the Change_fre_graphs Function when the meter name is changed from the drop down
-        self.ui.incomer_cb.currentTextChanged.connect(self.change_fre_graphs)
-        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
-        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
+        #Create the variable to store the returned values for the home tab pf and frequeny deviations
+        Home_PfD=self.home_plotter.home_pf_deviation()
+        Home_FrD=self.home_plotter.home_fre_deviation()
+        self.ui.Home_pf_lb.setText(Home_PfD)
+        self.ui.Home_freq_lb.setText(Home_FrD)
 
         #Create the variable to store the returned values from the "Main Incomer" Functions
         MI_kwh11,MI_kwh33 = self.MI_kwh(from_ts1, to_ts1)
@@ -238,6 +207,26 @@ class MainWindow(QMainWindow):
         self.ui.BI_kwh_lb.setText(BI_kwh)
         self.ui.BI_idlehours_lb.setText('\n'.join(BI_idlehrs))
         self.ui.BI_highkwh_lb.setText(f"{BI_kwhMax}<br>{BI_kwhMin}")
+        print("Default plotting done")
+        #Call the Change_voltage_graphs Function when the meter name is changed from the drop down
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_voltage_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_voltage_graphs)
+
+        #Call the Change_current_graphs Function when the meter name is changed from the drop down
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_current_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_current_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_current_graphs)
+
+        #Call the Change_pf_graphs Function when the meter name is changed from the drop down
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_pf_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_pf_graphs)
+
+        #Call the Change_fre_graphs Function when the meter name is changed from the drop down
+        self.ui.incomer_cb.currentTextChanged.connect(self.change_fre_graphs)
+        self.ui.ec02_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
+        self.ui.ec03_meter_cb.currentTextChanged.connect(self.change_fre_graphs)
 
         # Connect the single slot function to both dateChanged signals for Analytics
         self.ui.From_date.dateChanged.connect(self.call_graphs)
@@ -248,23 +237,23 @@ class MainWindow(QMainWindow):
 
 #Connecting Signals to the buttons      
     def on_home_btn_1_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget.setCurrentIndex(3)
     def on_analytics_btn_1_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(0)
     def on_insights_btn_1_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(1)
     def on_prediction_btn_1_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.stackedWidget.setCurrentIndex(2)
 
 #Connecting Signals to the buttons  
     def on_home_btn_2_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget.setCurrentIndex(3)
     def on_analytics_btn_2_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(0)
     def on_insights_btn_2_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(1)
     def on_prediction_btn_2_clicked(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.stackedWidget.setCurrentIndex(2)
 
 #Connecting Signals to the buttons          
     def on_energy_btn_3_clicked(self):
@@ -318,7 +307,7 @@ class MainWindow(QMainWindow):
         self.energy_plotter.centerwise_piechart(from_ts, to_ts)
         self.energy_plotter.weekly_graph(from_ts, to_ts)
         #Incomers Graphs
-        IncomerPlotter.total_incomer_supply(from_ts, to_ts)
+        self.incomer_plotter.total_incomer_supply(from_ts, to_ts)
         #EC02 graphs
         self.ec02_plotter.ec02_energy_consumption(from_ts, to_ts)
         self.ec02_plotter.ec02_meter_piechart(from_ts, to_ts)
@@ -339,13 +328,10 @@ class MainWindow(QMainWindow):
         sender = self.sender()
         if sender == self.ui.incomer_cb:
             frame = self.ui.incomer_V_frame
-            print("frame5")
         elif sender == self.ui.ec02_meter_cb:
             frame = self.ui.ec02_V_frame
-            print("frame12")
         elif sender == self.ui.ec03_meter_cb:
             frame = self.ui.ec03_V_frame
-            print("frame16")
         else:
             frame = None
         self.voltage(from_ts, to_ts, selected_meter,frame)
@@ -357,13 +343,10 @@ class MainWindow(QMainWindow):
         sender = self.sender()
         if sender == self.ui.incomer_cb:
             frame = self.ui.incomer_I_frame
-            print("frame6")
         elif sender == self.ui.ec02_meter_cb:
             frame = self.ui.ec02_I_frame
-            print("frame13")
         elif sender == self.ui.ec03_meter_cb:
             frame = self.ui.ec03_I_frame
-            print("frame17")
         else:
             frame = None
         self.current(from_ts, to_ts, selected_meter,frame)
@@ -375,13 +358,10 @@ class MainWindow(QMainWindow):
         sender = self.sender()
         if sender == self.ui.incomer_cb:
             frame = self.ui.incomer_PF_frame
-            print("frame6")
         elif sender == self.ui.ec02_meter_cb:
             frame = self.ui.ec02_PF_frame
-            print("frame13")
         elif sender == self.ui.ec03_meter_cb:
             frame = self.ui.ec03_PF_frame
-            print("frame17")
         else:
             frame = None
         self.powerfactor(from_ts, to_ts, selected_meter,frame)
@@ -393,13 +373,10 @@ class MainWindow(QMainWindow):
         sender = self.sender()
         if sender == self.ui.incomer_cb:
             frame = self.ui.incomer_Freq_frame
-            print("frame6")
         elif sender == self.ui.ec02_meter_cb:
             frame = self.ui.ec02_Freq_frame
-            print("frame13")
         elif sender == self.ui.ec03_meter_cb:
             frame = self.ui.ec03_Freq_frame
-            print("frame17")
         else:
             frame = None
         self.frequency(from_ts, to_ts, selected_meter,frame)
@@ -500,9 +477,62 @@ class MainWindow(QMainWindow):
         self.ui.BI_kwh_lb.setText(BI_kwh)
         self.ui.BI_idlehours_lb.setText('\n'.join(BI_idlehrs))
         self.ui.BI_highkwh_lb.setText(f"{BI_kwhMax}<br>{BI_kwhMin}")  
-    
+
+#Home Tab -- functions --    
+    def home_piechart(self):
+        m1 = home_df.groupby(['center','Time column 1']).sum()
+        m1 = m1.reset_index()
+        fig = px.pie(m1, values='kwh', names='center', title='CenterWise Energy Consumpution')
+        # return fig
+
+        plot1 = QWebEngineView()
+        plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
+
+        frame_layout = self.ui.Home_Pie_frame.layout()
+        if frame_layout is not None:
+            for i in reversed(range(frame_layout.count())):
+                frame_layout.itemAt(i).widget().setParent(None)
+        else:
+            frame_layout = QVBoxLayout(self.ui.Home_Pie_frame)
+        frame_layout.addWidget(plot1)
+    def home_meterchart(self):
+        meter_counts = home_df.groupby('meter').sum().reset_index()
+        fig = px.bar( meter_counts, y='kwh',x='meter', title='MeterWise Energy Consumpution')
+
+        plot1 = QWebEngineView()
+        plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
+
+        frame_layout = self.ui.Home_meter_frame.layout()
+        if frame_layout is not None:
+            for i in reversed(range(frame_layout.count())):
+                frame_layout.itemAt(i).widget().setParent(None)
+        else:
+            frame_layout = QVBoxLayout(self.ui.Home_meter_frame)
+        frame_layout.addWidget(plot1)
+    def home_buildingchart(self):
+        building_counts = home_df.groupby('building').sum().reset_index()
+        fig = px.bar( building_counts, y='kwh',x='building', title='BuildingWise Energy Consumpution')
+        plot1 = QWebEngineView()
+        plot1.setHtml(fig.to_html(include_plotlyjs='cdn',full_html=True))
+
+        frame_layout = self.ui.Home_Building_frame.layout()
+        if frame_layout is not None:
+            for i in reversed(range(frame_layout.count())):
+                frame_layout.itemAt(i).widget().setParent(None)
+        else:
+            frame_layout = QVBoxLayout(self.ui.Home_Building_frame)
+        frame_layout.addWidget(plot1)
+    def home_pf_deviation(self):
+        # pf_limits=0.85
+        count=len(home_df[home_df['PF']<0.85])
+        return f'Power Factor Deviation\nCount: {count}'
+    def home_fre_deviation(self):
+        count=len(home_df[home_df['F']<49])
+        return f'Frequency Deviation\nCount: {count}'
+
+#Analytics Tab -- V/I/PF/F functions --    
     def voltage(self, from_ts, to_ts, selected_meter, frame):
-        dfir = df2[(df2['meter'] == selected_meter)]
+        dfir = df_ec02_ec03[(df_ec02_ec03['meter'] == selected_meter)]
         fig = go.Figure()
         mask2=(dfir['Time column 1']>=from_ts)&(dfir['Time column 1']<=to_ts)
         fig.add_trace(go.Scatter(x=dfir.loc[mask2,'Time column 1'],y=dfir.loc[mask2,'Vry'],name = 'Vry' ))
@@ -522,7 +552,7 @@ class MainWindow(QMainWindow):
             frame_layout.addWidget(plot1)
     def current(self,from_ts, to_ts, selected_meter,frame):
         # selected_meter = self.ui.comboBox_5.currentText()
-        dfir = df2[(df2['meter'] == selected_meter)]
+        dfir = df_ec02_ec03[(df_ec02_ec03['meter'] == selected_meter)]
         fig = go.Figure()
         mask2=(dfir['Time column 1']>=from_ts)&(dfir['Time column 1']<=to_ts)
         fig.add_trace(go.Scatter(x=dfir.loc[mask2,'Time column 1'],y=dfir.loc[mask2,'Ir'],name = 'Ir' ))
@@ -543,7 +573,7 @@ class MainWindow(QMainWindow):
             frame_layout.addWidget(plot1)
     def powerfactor(self,from_ts, to_ts,selected_meter,frame):
         # selected_meter = self.ui.comboBox_5.currentText()
-        dfir = df2[(df2['meter'] == selected_meter)]
+        dfir = df_ec02_ec03[(df_ec02_ec03['meter'] == selected_meter)]
         fig = go.Figure()
         mask2=(dfir['Time column 1']>=from_ts)&(dfir['Time column 1']<=to_ts)
         fig.add_trace(go.Scatter(x=dfir.loc[mask2,'Time column 1'],y=dfir.loc[mask2,'PF'],name = 'PF' ))
@@ -562,7 +592,7 @@ class MainWindow(QMainWindow):
             frame_layout.addWidget(plot1)
     def frequency(self,from_ts, to_ts,selected_meter,frame):
         # selected_meter = self.ui.comboBox.currentText()
-        dfir = df2[(df2['meter'] == selected_meter)]
+        dfir = df_ec02_ec03[(df_ec02_ec03['meter'] == selected_meter)]
         fig = go.Figure()
         mask2=(dfir['Time column 1']>=from_ts)&(dfir['Time column 1']<=to_ts)
         fig.add_trace(go.Scatter(x=dfir.loc[mask2,'Time column 1'],y=dfir.loc[mask2,'F'],name = 'F' ))
@@ -585,8 +615,8 @@ class MainWindow(QMainWindow):
 ## Main Incomer
     #Total energy consumption of the Main Incomer- 11kv & 33kv
     def MI_kwh(self,from_ts, to_ts):
-        main_incomer2 = df[df['meter']=='EC02 MFM 11KV TRAFO']
-        main_incomer3 = df1[df1['meter']=='33KV Incomer']
+        main_incomer2 = df_ec02[df_ec02['meter']=='EC02 MFM 11KV TRAFO']
+        main_incomer3 = df_ec03[df_ec03['meter']=='33KV Incomer']
         mask2 = (main_incomer2['Time column 1']>= from_ts) & (main_incomer2['Time column 1']<= to_ts)
         mask3 = (main_incomer3['Time column 1']>= from_ts) & (main_incomer3['Time column 1']<= to_ts)
         total2 = round(main_incomer2.loc[mask2, 'actual_kwh'].sum(),0)
@@ -594,8 +624,8 @@ class MainWindow(QMainWindow):
         return f'11kV TRAFO: {total2} kWh',f'33kV TRAFO: {total3} kWh'
     #Power factor of 11kv & 33kv Main incomer
     def MI_powerfactor(self,from_ts,to_ts):
-        main_incomer2 = df[(df['meter']=='EC02 MFM 11KV TRAFO')& (df['Vry']!=0)]
-        main_incomer3 = df1[(df1['meter']=='33KV Incomer')&(df['Vry']!=0)]
+        main_incomer2 = df_ec02[(df_ec02['meter']=='EC02 MFM 11KV TRAFO')& (df_ec02['Vry']!=0)]
+        main_incomer3 = df_ec03[(df_ec03['meter']=='33KV Incomer')&(df_ec03['Vry']!=0)]
         mask2 = (main_incomer2['Time column 1']>= from_ts) & (main_incomer2['Time column 1']<= to_ts)
         mask3 = (main_incomer3['Time column 1']>= from_ts) & (main_incomer3['Time column 1']<= to_ts)
         pf_limits = 0.85
@@ -604,8 +634,8 @@ class MainWindow(QMainWindow):
         return f'11kV TRAFO: {count}',f'33kV TRAFO: {count1}'
     #Frequency of 11kv & 33Kv Main incomer
     def MI_frequency(self,from_ts,to_ts):
-        main_incomer2 = df[(df['meter']=='EC02 MFM 11KV TRAFO')]
-        main_incomer3 = df1[(df1['meter']=='33KV Incomer')]
+        main_incomer2 = df_ec02[(df_ec02['meter']=='EC02 MFM 11KV TRAFO')]
+        main_incomer3 = df_ec03[(df_ec03['meter']=='33KV Incomer')]
         mask2 = (main_incomer2['Time column 1']>= from_ts) & (main_incomer2['Time column 1']<= to_ts)
         mask3 = (main_incomer3['Time column 1']>= from_ts) & (main_incomer3['Time column 1']<= to_ts)
         count = len(main_incomer2.loc[mask2 &(main_incomer2['F']<49)])
@@ -613,8 +643,8 @@ class MainWindow(QMainWindow):
         return f'11kV TRAFO: {count}',f'33kV TRAFO: {count1}'
     #Max energy consumtion  over 11kv & 33kv Main incomer
     def MI_high_kwh(self,from_ts, to_ts):
-        main_incomer2 = df[df['meter']=='EC02 MFM 11KV TRAFO']
-        main_incomer3 = df1[df1['meter']=='33KV Incomer']
+        main_incomer2 = df_ec02[df_ec02['meter']=='EC02 MFM 11KV TRAFO']
+        main_incomer3 = df_ec03[df_ec03['meter']=='33KV Incomer']
         mask2 = (main_incomer2['Time column 1']>= from_ts) & (main_incomer2['Time column 1']<= to_ts)
         mask3 = (main_incomer3['Time column 1']>= from_ts) & (main_incomer3['Time column 1']<= to_ts)
         total2 = round(main_incomer2.loc[mask2, 'actual_kwh'].sum(),0)
@@ -625,8 +655,8 @@ class MainWindow(QMainWindow):
             return f'33kV main incomer supplies more than 11kV main incomer'       
     #Idle hours of 11kv & 33kv Main incomer
     def MI_idlehours(self,from_ts,to_ts):
-        main_incomer2 = df[(df['meter']=='EC02 MFM 11KV TRAFO')]
-        main_incomer3 = df1[(df1['meter']=='33KV Incomer')]
+        main_incomer2 = df_ec02[(df_ec02['meter']=='EC02 MFM 11KV TRAFO')]
+        main_incomer3 = df_ec03[(df_ec03['meter']=='33KV Incomer')]
         mask2 = (main_incomer2['Time column 1']>= from_ts) & (main_incomer2['Time column 1']<= to_ts)
         mask3 = (main_incomer3['Time column 1']>= from_ts) & (main_incomer3['Time column 1']<= to_ts)
         count = len(main_incomer2.loc[mask2 &(main_incomer2['Vry']==0) & (main_incomer2['Vbr']==0) & (main_incomer2['Vyb']==0) & (main_incomer2['Ir']==0) & (main_incomer2['Iy']==0) & (main_incomer2['Ib']==0)])
@@ -636,7 +666,7 @@ class MainWindow(QMainWindow):
         return f'11kV TRAFO is idle for {hour_count} hours',f'33kV TRAFO is idle for {hour_count1} hours'
     #Voltage swell and sag for 33kv Main incomer
     def MI_33kv_Vswell_Vsag(self,from_ts,to_ts):
-        main_incomer3 = df1[(df1['meter']=='33KV Incomer')]
+        main_incomer3 = df_ec03[(df_ec03['meter']=='33KV Incomer')]
         voltage = main_incomer3[['rv','yv','bv','Time column 1']]
         voltage.set_index('Time column 1', inplace=True)
         voltage = voltage.resample('30S').ffill()
@@ -673,7 +703,7 @@ class MainWindow(QMainWindow):
         return f'{num_swells_rv}',f'{num_swells_yv}',f'{num_swells_bv}',f'{num_sags_rv}',f'{num_sags_yv}',f'{num_sags_bv}'
     #Voltage swell and sag for 11kv Main incomer
     def MI_11kv_Vswell_Vsag(self,from_ts,to_ts):
-        main_incomer2 = df[(df['meter']=='EC02 MFM 11KV TRAFO')]
+        main_incomer2 = df_ec02[(df_ec02['meter']=='EC02 MFM 11KV TRAFO')]
         voltage = main_incomer2[['rv','yv','bv','Time column 1']]
         voltage.set_index('Time column 1', inplace=True)
         voltage = voltage.resample('30S').ffill()
@@ -713,21 +743,21 @@ class MainWindow(QMainWindow):
     #Total energy consumption of Incomers
     def In_kwh(self,from_ts, to_ts):
         selected_meter = self.ui.In_insights_cb.currentText()
-        data = df4[df4['meter']==selected_meter]
+        data = df_meters[df_meters['meter']==selected_meter]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         total = round(data.loc[mask2,'actual_kwh'].sum(),0)
         return f' {selected_meter}: {total} kWh'
     #Frequency
     def In_frequency(self,from_ts,to_ts):
         selected_meter = self.ui.In_insights_cb.currentText()
-        data = df4[df4['meter']==selected_meter]
+        data = df_meters[df_meters['meter']==selected_meter]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         count = len(data.loc[mask2 &(data['F']<49)])
         return f' {selected_meter}: {count}'
     #Power factor
     def In_powerfactor(self,from_ts,to_ts):
         selected_meter = self.ui.In_insights_cb.currentText()
-        data = df4[df4['meter']==selected_meter]
+        data = df_meters[df_meters['meter']==selected_meter]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         pf_limits = 0.85
         count = len(data.loc[mask2 &(data['PF']<0.85)])
@@ -735,7 +765,7 @@ class MainWindow(QMainWindow):
     #Voltage swell and sag
     def In_Vswell_Vsag(self,from_ts,to_ts):
         selected_meter = self.ui.In_insights_cb.currentText()
-        main_incomer3 = df4[(df4['meter']==selected_meter)]
+        main_incomer3 = df_meters[(df_meters['meter']==selected_meter)]
         voltage = main_incomer3[['rv','yv','bv','Time column 1']]
         voltage.set_index('Time column 1', inplace=True)
         voltage = voltage.resample('30S').ffill()
@@ -772,7 +802,7 @@ class MainWindow(QMainWindow):
     #Idle hours
     def In_idlehours(self,from_ts,to_ts):
         selected_meter = self.ui.In_insights_cb.currentText()
-        data = df4[df4['meter']==selected_meter]
+        data = df_meters[df_meters['meter']==selected_meter]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         count = len(data.loc[mask2 &(data['Vry']==0) & (data['Vbr']==0) & (data['Vyb']==0) & (data['Ir']==0) & (data['Iy']==0) & (data['Ib']==0)])
         hour_count =count/4
@@ -782,7 +812,7 @@ class MainWindow(QMainWindow):
     #Total energy consumption of each building  
     def BI_kwh(self,from_ts,to_ts):
         selected_center = self.ui.BI_insights_cb.currentText()
-        data = df3[df3['center']== selected_center]
+        data = df_all_buildings[df_all_buildings['center']== selected_center]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         value = data.loc[mask2]
         value = value.groupby(['building']).sum()
@@ -797,7 +827,7 @@ class MainWindow(QMainWindow):
     #Idle hours - Top5 meters of each center
     def BI_idlehours(self,from_ts, to_ts):
         selected_center = self.ui.BI_insights_cb.currentText()
-        d = df3[df3['center']== selected_center]
+        d = df_all_buildings[df_all_buildings['center']== selected_center]
         idle_hours = []
         for meter in d['meter'].unique():
             data = d[d['meter']==meter]
@@ -813,7 +843,7 @@ class MainWindow(QMainWindow):
     #Determaining Max Energy consumption - Morning/Afternoon/Evening/Night
     def BI_kwh_max(self,from_ts,to_ts):
         selected_center = self.ui.BI_insights_cb.currentText()
-        data = df3[df3['center']== selected_center]
+        data = df_all_buildings[df_all_buildings['center']== selected_center]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         value = data.loc[mask2]
         value = value.groupby(['time_of_day']).sum()
@@ -828,7 +858,7 @@ class MainWindow(QMainWindow):
     #Determaining Min Energy consumption - Morning/Afternoon/Evening/Night
     def BI_kwh_min(self,from_ts,to_ts):
         selected_center = self.ui.BI_insights_cb.currentText()
-        data = df3[df3['center']== selected_center]
+        data = df_all_buildings[df_all_buildings['center']== selected_center]
         mask2 = (data['Time column 1']>= from_ts) & (data['Time column 1']<= to_ts)
         value = data.loc[mask2]
         value = value.groupby(['time_of_day']).sum()
@@ -841,6 +871,8 @@ class MainWindow(QMainWindow):
                 else:
                     return (f"{building_names[j]} {selected_center} consumed less energy")
     
+    
+
 #main function
 if __name__ == "__main__":
     app = QApplication(sys.argv)

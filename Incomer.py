@@ -7,11 +7,11 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView
 import pandas as pd
 
 #df2--this variable refers to the combined dataset of Energy Center-2 & 3 (whole dataset)
-df2=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
+df_ec02_ec03=pd.read_csv('C:\\Users\\20339181\\L&T Construction\\PT&D Digital Solutions - Incubation - Documents\\Incubation\\DSIDIB Team\\Sathwika\\PGL-Analytics-Insights-Final - Copy\\Dashboard Template\\ec02_ec03.csv')
 print("Loading...")
 #Converting the Time column to the pandas datetime object
-df2['Time column 1'] = df2['Time column 1'].astype(str)
-df2['Time column 1'] = pd.to_datetime(df2['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
+df_ec02_ec03['Time column 1'] = df_ec02_ec03['Time column 1'].astype(str)
+df_ec02_ec03['Time column 1'] = pd.to_datetime(df_ec02_ec03['Time column 1'],format = '%d.%m.%Y %H:%M:%S.%f')
 
 class IncomerPlotter:
     def __init__(self, ui):
@@ -24,7 +24,7 @@ class IncomerPlotter:
             M = ['INCOMER-EC03','Trafo-1','Trafo-2','Trafo-3','Trafo-4','Trafo-5','trafo-1','INCOMER']
             data=[]
             title="INCOMERS For entrie Centers"
-            grouped1 = df2.groupby(['building','Time column 1']).sum()
+            grouped1 = df_ec02_ec03.groupby(['building','Time column 1']).sum()
             grouped1 = grouped1.reset_index()
             mask = (grouped1['Time column 1']>= from_ts) & (grouped1['Time column 1']<= to_ts)
             for b in grouped1.building.unique():
